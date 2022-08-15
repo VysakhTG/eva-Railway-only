@@ -9,3 +9,4 @@ bs4
 yt-dlp 
 youtube-dl
 imdbpy==2021.4.18
+ffmpeg-python>=0.2.0
