@@ -40,4 +40,4 @@ prettyconf
 cachetools
 spamwatch
 mapping
-telethon
+
