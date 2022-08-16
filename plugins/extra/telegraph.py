@@ -1,46 +1,52 @@
 import os
-import shutil
 from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, CallbackQuery
 from telegraph import upload_file
-from info import TMP_DOWNLOAD_DIRECTORY
-from plugins.helper_functions.cust_p_filters import f_onw_fliter
-from plugins.helper_functions.get_file_id import get_file_id
 
-
-@Client.on_message(
-    filters.command("telegraph") &
-    f_onw_fliter
-)
+@Client.on_message(filters.private & filters.command(["telegraph"]))
 async def telegraph(client, message):
     replied = message.reply_to_message
     if not replied:
-        await message.reply_text("𝚁𝙴𝙿𝙻𝚈 𝚃𝙾 𝙰 𝙿𝙷𝙾𝚃𝙾 𝙾𝚁 𝚅𝙸𝙳𝙴𝙾 𝚄𝙽𝙳𝙴𝚁 𝟻𝙼𝙱.")
+        await message.reply("Reply to a supported media file")
         return
-    file_info = get_file_id(replied)
-    if not file_info:
-        await message.reply_text("Not supported!")
+    if not (
+        (replied.photo and replied.photo.file_size <= 5242880)
+        or (replied.animation and replied.animation.file_size <= 5242880)
+        or (
+            replied.video
+            and replied.video.file_name.endswith(".mp4")
+            and replied.video.file_size <= 5242880
+        )
+        or (
+            replied.document
+            and replied.document.file_name.endswith(
+                (".jpg", ".jpeg", ".png", ".gif", ".mp4"),
+            )
+            and replied.document.file_size <= 5242880
+        )
+    ):
+        await message.reply("Not supported!")
         return
-    _t = os.path.join(
-        TMP_DOWNLOAD_DIRECTORY,
-        str(replied.message_id)
-    )
-    if not os.path.isdir(_t):
-        os.makedirs(_t)
-    _t += "/"
-    download_location = await replied.download(
-        _t
+    download_location = await client.download_media(
+        message=message.reply_to_message,
+        file_name="root/downloads/",
     )
     try:
         response = upload_file(download_location)
     except Exception as document:
-        await message.reply_text(message, text=document)
+        await message.reply(message, text=document)
     else:
         await message.reply(
-            f"Link :- <code>https://telegra.ph{response[0]}</code>",
-            disable_web_page_preview=True
+            f"<b>Link:-</b>\n\n <code>https://telegra.ph{response[0]}</code>",
+            quote=True,
+            reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(text="open link", url=f"https://telegra.ph{response[0]}"),
+                    InlineKeyboardButton(text="share link", url=f"https://telegram.me/share/url?url=https://telegra.ph{response[0]}")
+                ]
+            ]
         )
+    )
     finally:
-        shutil.rmtree(
-            _t,
-            ignore_errors=True
-        )
+        os.remove(download_location)
