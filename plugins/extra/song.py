@@ -6,9 +6,8 @@ import requests
 
 import os
 import time
-from config import Config
+import time
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton 
-
 
 def time_to_seconds(time):
     stringt = str(time)
