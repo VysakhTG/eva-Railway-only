@@ -8,3 +8,6 @@ requests
 bs4
 imdbpy==2021.4.18
 telegraph
+youtube_dl
+ffmpeg-python
+youtube_search_python
