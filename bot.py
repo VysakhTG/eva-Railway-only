@@ -20,6 +20,7 @@ from pyrogram import types
 class Bot(Client):
 
     def __init__(self):
+        self.start_time = None
         super().__init__(
             name=SESSION,
             api_id=API_ID,
@@ -37,6 +38,7 @@ class Bot(Client):
         await super().start()
         await Media.ensure_indexes()
         me = await self.get_me()
+        self.start_time = time.time()
         temp.ME = me.id
         temp.U_NAME = me.username
         temp.B_NAME = me.first_name
