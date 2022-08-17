@@ -6,7 +6,6 @@ import requests
 
 import os
 import time
-import time
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton 
 
 def time_to_seconds(time):
