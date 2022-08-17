@@ -709,7 +709,7 @@ async def auto_filter(client, msg, spoll=False):
         )
     else:
         cap = f"Here is what i found for your query {search}"
-    if imdb and imdb.get('poster'):
+    """if imdb 
         try:
             await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024],
                                       reply_markup=InlineKeyboardMarkup(btn))
@@ -720,8 +720,8 @@ async def auto_filter(client, msg, spoll=False):
         except Exception as e:
             logger.exception(e)
             await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
-    else:
-        await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
+    else:"""
+    await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
     if spoll:
         await msg.message.delete()
 
