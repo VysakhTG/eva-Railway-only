@@ -20,3 +20,6 @@ ffmpeg-python
 youtube_search
 search_engine_parser
 ffmpeg
+aiohttp
+aiofiles
+asyncio
