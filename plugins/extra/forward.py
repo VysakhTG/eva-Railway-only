@@ -1,5 +1,5 @@
 from pyrogram import Client, filters 
-from pyrogram.types import Message 
+from pyrogram.types import User, Message
 import time 
 import os 
 from info import ADMINS 
