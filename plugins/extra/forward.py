@@ -6,13 +6,13 @@
 from pyrogram import filters
 from pyrogram import Client as ace
 from pyrogram.types import Message
-
+from info import ADMINS
 import time
 import os
 
 
 @ace.on_message(
-    filters.chat(ADMIN) & filters.private &
+    filters.chat(ADMINS) & filters.private &
     filters.incoming & filters.command("ace", prefixes=prefixes)
 )
 async def forward(bot: ace , m: Message):
