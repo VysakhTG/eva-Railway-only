@@ -7,7 +7,6 @@ from pyrogram import filters
 from pyrogram import Client as ace
 from pyrogram.types import Message
 
-from config import Config
 import time
 import os
 
