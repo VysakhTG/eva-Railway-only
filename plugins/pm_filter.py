@@ -420,19 +420,24 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer('Piracy Is Crime')
     elif query.data == "help":
         buttons = [[
-            InlineKeyboardButton('ᴍᴀɴᴜᴀʟ ғɪʟᴛᴇʀ', callback_data='manuelfilter'),
+            InlineKeyboardButton('ᴍᴀɴᴜᴀʟ ғɪʟᴛᴇʀ', callback_data='manuelfilter'), 
+            InlineKeyboardButton('ᴢɪᴘᴘᴇʀ', callback_data='zipper'),
             InlineKeyboardButton('ᴀᴜᴛᴏ ғɪʟᴛᴇʀ', callback_data='autofilter')
         ], [
             InlineKeyboardButton('ᴄᴏɴɴᴇᴄᴛɪᴏɴ', callback_data='coct'),
             InlineKeyboardButton('ᴛʀᴀɴꜱʟᴀᴛᴏʀ', callback_data='translator')
         ], [
-            InlineKeyboardButton('ᴢɪᴘᴘᴇʀ', callback_data='zipper'),
+            InlineKeyboardButton('ꜱᴛɪᴄᴋᴇʀ', callback_data='sticker'),
             InlineKeyboardButton('ᴛᴀɢ ᴀʟʟ', callback_data='tagall'),
             InlineKeyboardButton('ᴍᴜꜱɪᴄ', callback_data='musuc')
         ], [
             InlineKeyboardButton('ᴛ ɢʀᴀᴘʜ', callback_data='graph'),
-            InlineKeyboardButton('🏠 Home', callback_data='start'),
-            InlineKeyboardButton('🔮 Status', callback_data='stats')
+            InlineKeyboardButton('🔮 ꜱᴛᴀᴛᴜꜱ', callback_data='stats'),
+            InlineKeyboardButton('ʟᴏɢᴏ', callback_data='logo')
+        ], [
+            InlineKeyboardButton('◁', callback_data='nexxt')
+            InlineKeyboardButton('• ʜᴏᴍᴇ •', callback_data='start'),
+            InlineKeyboardButton('▷', callback_data='nexxxt')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
