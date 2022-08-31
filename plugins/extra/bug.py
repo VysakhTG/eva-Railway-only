@@ -75,21 +75,7 @@ async def bug(_, msg: Message):
                     [[InlineKeyboardButton("• ᴄʟᴏsᴇ •", callback_data=f"close_reply")]]
                 ),
             )
-            await Client.send_photo(
-                log,
-                photo=thumb,
-                caption=f"{bug_report}",
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        [InlineKeyboardButton("• ᴠɪᴇᴡ ʙᴜɢ •", url=f"{msg.link}")],
-                        [
-                            InlineKeyboardButton(
-                                "• ᴄʟᴏsᴇ •", callback_data="close_send_photo"
-                            )
-                        ],
-                    ]
-                ),
-            )
+            gggu"
         else:
             await msg.reply_text(
                 f"<b>» ɴᴏ ʙᴜɢ ᴛᴏ ʀᴇᴩᴏʀᴛ !</b>",
