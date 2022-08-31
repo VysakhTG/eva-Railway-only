@@ -469,6 +469,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
+    elif query.data == "nexxt":
+        buttons = [[
+            InlineKeyboardButton('ʀᴇᴘᴏʀᴛ', callback_data='report')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons) 
+        await query.message.edit_text( 
+            text=script.NEXXT_TXT.format(query.from_user.mention), 
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
     elif query.data == "source":
         buttons = [[
             InlineKeyboardButton('👩‍🦯 Back', callback_data='about')
