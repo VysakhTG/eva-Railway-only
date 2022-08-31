@@ -96,26 +96,3 @@ async def bug(_, msg: Message):
             )
 
 
-@Client.on_callback_query(filters.regex("close_reply"))
-async def close_reply(msg, CallbackQuery):
-    await CallbackQuery.message.delete()
-
-
-@Client.on_callback_query(filters.regex("close_send_photo"))
-async def close_send_photo(_, CallbackQuery):
-    is_Admin = await Client.get_chat_member(
-        CallbackQuery.message.chat.id, CallbackQuery.from_user.id
-    )
-    if not is_Admin.can_delete_messages:
-        return await CallbackQuery.answer(
-            "ʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ʀɪɢʜᴛs ᴛᴏ ᴄʟᴏsᴇ ᴛʜɪs.", show_alert=True
-        )
-    else:
-        await CallbackQuery.message.delete()
-
-
-__help__ = """
-*ғᴏʀ ʀᴇᴩᴏʀᴛɪɴɢ ᴀ ʙᴜɢ ɪɴ ғᴀʟʟᴇɴ ✘ ʀᴏʙᴏᴛ*
- ❍ /bug *:* ᴛᴏ ʀᴇᴩᴏʀᴛ ᴀ ʙᴜɢ ᴀᴛ sᴜᴩᴩᴏʀᴛ ᴄʜᴀᴛ.
-"""
-__mod_name__ = "Bᴜɢ"
