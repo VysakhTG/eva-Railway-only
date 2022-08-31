@@ -81,4 +81,6 @@ async def bug(_, msg: Message):
                 f"<b>» ɴᴏ ʙᴜɢ ᴛᴏ ʀᴇᴩᴏʀᴛ !</b>",
             )
 
-
+@Client.on_callback_query(filters.regex("close_reply"))
+async def close_reply(msg, CallbackQuery):
+    await CallbackQuery.message.delete()
