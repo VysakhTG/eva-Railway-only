@@ -11,10 +11,10 @@ async def forward(client, message):
     msg1 = await client.send_message(message.chat.id, "**Send Starting Message From Where you want to Start forwarding**") 
     msg2 = await client.send_message(message.chat.id, "**Send Ending Message from same chat**") 
     # print(msg1.forward_from_message_id, msg1.forward_from_chat.id, msg1.forward_from_message_id) 
-    i_chat = msg1.forward_from_chat.id 
+    i_chat = msg1.forward_from_chat
     s_msg = int(msg1.forward_from_message_id)
     f_msg = int(msg2.forward_from_message_id)+1 
-    await m.reply_text('**Forwarding Started**\n\nPress /restart to Stop and /log to get log TXT file') 
+    await message.reply_text('**Forwarding Started**\n\nPress /restart to Stop and /log to get log TXT file') 
     try:      
         for i in range(s_msg, f_msg):
             try:
