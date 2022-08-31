@@ -75,7 +75,6 @@ async def bug(_, msg: Message):
                     [[InlineKeyboardButton("• ᴄʟᴏsᴇ •", callback_data=f"close_reply")]]
                 ),
             )
-            gggu"
         else:
             await msg.reply_text(
                 f"<b>» ɴᴏ ʙᴜɢ ᴛᴏ ʀᴇᴩᴏʀᴛ !</b>",
