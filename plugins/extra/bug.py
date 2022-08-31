@@ -10,7 +10,7 @@ from pyrogram.types import (
 from info import (
     ADMINS as owner_id,
     OWNER_USERNAME as owner_usn,
-    LOG_CHANNEL as log,
+    SUPPORT_LOG as log,
 )
 def content(msg: Message) -> [None, str]:
     text_to_return = msg.text
