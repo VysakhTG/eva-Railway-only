@@ -6,13 +6,13 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQ
 @Client.on_message(filters.command("bug"))
 async def bug(bot, message):
     if msg.chat.username:
-        chat_username = f"@{msg.chat.username}/`{msg.chat.id}`"
+        chat_username = f"@{message.chat.username}/`{message.chat.id}`"
     else:
         chat_username = f"ᴩʀɪᴠᴀᴛᴇ ɢʀᴏᴜᴩ/`{msg.chat.id}`"
     bugs = content(msg)
-    user_id = msg.from_user.id
+    user_id = message.from_user.id
     if bugs:
-            await msg.reply_text(
+            await message.reply_text(
                 f"<b>ʙᴜɢ ʀᴇᴩᴏʀᴛ : </b>\n\n"
                 "<b>» ʙᴜɢ sᴜᴄᴄᴇssғᴜʟʟʏ ʀᴇᴩᴏʀᴛᴇᴅ ᴀᴛ sᴜᴩᴩᴏʀᴛ ᴄʜᴀᴛ !</b>",
                 reply_markup=InlineKeyboardMarkup(
