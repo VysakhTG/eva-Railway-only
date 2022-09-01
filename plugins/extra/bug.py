@@ -11,7 +11,7 @@ async def bug(bot, message):
         chat_username = f"ᴩʀɪᴠᴀᴛᴇ ɢʀᴏᴜᴩ/`{msg.chat.id}`"
     bugs = content(msg)
     user_id = msg.from_user.id
-        if bugs:
+    if bugs:
             await msg.reply_text(
                 f"<b>ʙᴜɢ ʀᴇᴩᴏʀᴛ : </b>\n\n"
                 "<b>» ʙᴜɢ sᴜᴄᴄᴇssғᴜʟʟʏ ʀᴇᴩᴏʀᴛᴇᴅ ᴀᴛ sᴜᴩᴩᴏʀᴛ ᴄʜᴀᴛ !</b>",
