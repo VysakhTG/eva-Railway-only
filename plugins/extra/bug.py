@@ -1,29 +1,7 @@
 from datetime import datetime
 
 from pyrogram import Client,filters
-from pyrogram.types import (
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-    CallbackQuery,
-    Message,
-)
-from info import (
-    ADMINS as owner_id,
-    OWNER_USERNAME as owner_usn,
-    SUPPORT_CHAT as log,
-)
-def content(msg: Message) -> [None, str]:
-    text_to_return = msg.text
-
-    if msg.text is None:
-        return None
-    if " " in text_to_return:
-        try:
-            return msg.text.split(None, 1)[1]
-        except IndexError:
-            return None
-    else:
-        return None
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, Message 
 
 
 @Client.on_message(filters.command("bug"))
