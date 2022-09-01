@@ -109,3 +109,8 @@ Added By - {}
 ID - <code>{}</code>
 Name - {}
 """
+    LOG_TEXT_B = """#NewBug
+ʙᴜɢ - <code>{}</code>
+ʀᴇᴩᴏʀᴛᴇᴅ ʙʏ - {}
+ID - <code>{}</code>
+"""
