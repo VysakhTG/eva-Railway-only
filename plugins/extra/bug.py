@@ -8,7 +8,7 @@ async def bug(bot, message):
     if msg.chat.username:
         chat_username = f"@{message.chat.username}/`{message.chat.id}`"
     else:
-        chat_username = f"ᴩʀɪᴠᴀᴛᴇ ɢʀᴏᴜᴩ/`{msg.chat.id}`"
+        chat_username = f"ᴩʀɪᴠᴀᴛᴇ ɢʀᴏᴜᴩ/`{message.chat.id}`"
     bugs = content(msg)
     user_id = message.from_user.id
     if bugs:
