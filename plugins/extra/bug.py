@@ -5,7 +5,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQ
 
 @Client.on_message(filters.command("bug"))
 async def bug(bot, message):
-    if msg.chat.username:
+    if message.chat.username:
         chat_username = f"@{message.chat.username}/`{message.chat.id}`"
     else:
         chat_username = f"ᴩʀɪᴠᴀᴛᴇ ɢʀᴏᴜᴩ/`{message.chat.id}`"
