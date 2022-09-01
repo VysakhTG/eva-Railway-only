@@ -5,3 +5,21 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQ
 
 @Client.on_message(filters.command("bug"))
 async def bug(bot, message):
+    if msg.chat.username:
+        chat_username = f"@{msg.chat.username}/`{msg.chat.id}`"
+    else:
+        chat_username = f"ᴩʀɪᴠᴀᴛᴇ ɢʀᴏᴜᴩ/`{msg.chat.id}`"
+    bugs = content(msg)
+    user_id = msg.from_user.id
+    if bugs:
+            await msg.reply_text(
+                f"<b>ʙᴜɢ ʀᴇᴩᴏʀᴛ : {bugs}</b>\n\n"
+                "<b>» ʙᴜɢ sᴜᴄᴄᴇssғᴜʟʟʏ ʀᴇᴩᴏʀᴛᴇᴅ ᴀᴛ sᴜᴩᴩᴏʀᴛ ᴄʜᴀᴛ !</b>",
+                reply_markup=InlineKeyboardMarkup(
+                    [[InlineKeyboardButton("• ᴄʟᴏsᴇ •", callback_data=f"close_reply")]]
+                ),
+            )
+@Client.on_callback_query(filters.regex("close_reply"))
+async def close_reply(msg, CallbackQuery):
+    await CallbackQuery.message.delete()
+
