@@ -13,7 +13,7 @@ async def report_user(bot, message):
         success = True
         report = f"𝖱𝖾𝗉𝗈𝗋𝗍𝖾𝗋 : {mention} ({reporter})" + "\n"
         report += f"𝖬𝖾𝗌𝗌𝖺𝗀𝖾 : {message.reply_to_message.link}"
-        for admins:
+        for admins
             try:
                 reported_post = await message.reply_to_message.forward(admin.user.id)
                 await reported_post.reply_text(
