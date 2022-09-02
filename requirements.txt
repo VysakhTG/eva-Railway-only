@@ -30,3 +30,4 @@ future
 tswift
 googletrans==4.0.0-rc1
 gtts
+future
