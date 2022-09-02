@@ -1,10 +1,11 @@
 from pyrogram import Client, filters
 
-import youtube_dl
-from youtube_search import YoutubeSearch
-import requests
-
 import os
+import asyncio
+import requests
+import aiohttp
+import yt_dlp
+from youtube_search import YoutubeSearch
 
 ## Extra Fns -------------------------------
 
