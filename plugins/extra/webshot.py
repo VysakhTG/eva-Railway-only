@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
 @Client.on_message((filters.command("webss"))
-async def take_ss(_, message: Message):
+async def webss(client, message):
     try:
         if len(message.command) != 2:
             return await message.reply_text("Give A Url To Fetch Screenshot.")
