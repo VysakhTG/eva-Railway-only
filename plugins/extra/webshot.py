@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
-from pyrogram.types import Message
+from pyrogram.types import Message 
+
 @Client.on_message((filters.command("webss"))
 async def webss(bot, message):
     try:
