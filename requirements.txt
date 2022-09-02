@@ -17,6 +17,7 @@ aiohttp==3.6.2
 youtube_dl
 youtube_search_python
 youtube_search
+yt_dlp
 wget
 requests
 python-decouple
