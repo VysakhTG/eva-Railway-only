@@ -10,7 +10,7 @@ async def bug(bot, message):
         chat_username = f"@{message.chat.username}/`{message.chat.id}`"
     else:
         chat_username = f"ᴩʀɪᴠᴀᴛᴇ ɢʀᴏᴜᴩ/`{message.chat.id}`"
-    bugs = message.from_user
+    bugs = message.copy()
     user_id = message.from_user.id
     if bugs:
             await message.reply_text(
@@ -20,7 +20,7 @@ async def bug(bot, message):
                     [[InlineKeyboardButton("• ᴄʟᴏsᴇ •", callback_data=f"close_reply")]]
                 ),
             )
-    await bot.send_message(LOG_CHANNEL, script.LOG_TEXT_B.format(message.reply_to_message.link, message.from_user.mention, message.from_user.id))
+    await bot.send_message(LOG_CHANNEL, script.LOG_TEXT_B.format(bugs, message.from_user.mention, message.from_user.id))
 @Client.on_callback_query(filters.regex("close_reply"))
 async def close_reply(msg, CallbackQuery):
     await CallbackQuery.message.delete()
