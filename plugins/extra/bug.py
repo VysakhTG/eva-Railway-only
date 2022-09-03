@@ -34,7 +34,7 @@ async def bug(bot, message):
                 ),
             )
     else: 
-        await msg.reply_text(
+        await message.reply_text(
             f"<b>» ɴᴏ ʙᴜɢ ᴛᴏ ʀᴇᴩᴏʀᴛ !</b>",
         )
     await bot.send_message(LOG_CHANNEL, script.LOG_TEXT_B.format(bugs, message.from_user.mention, message.from_user.id))
