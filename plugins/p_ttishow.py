@@ -52,9 +52,7 @@ async def save_group(bot, message):
                     try:
                         await (temp.MELCOW['welcome']).delete()
                     except:
-                        pass 
-                chatmem = await message.chat.get_member(message.from_user.id) 
-                date = datetime.fromtimestamp(chatmem.joined_date).strftime("%d/%m/%Y, %H:%M:%S")
+                        pass
                 temp.MELCOW['welcome'] = await message.reply(f"<b>Hey , {u.mention}, Welcome to {message.chat.title}</b>")
 
 
