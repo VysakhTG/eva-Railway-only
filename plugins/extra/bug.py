@@ -4,6 +4,19 @@ from info import LOG_CHANNEL
 from pyrogram import Client,filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, Message 
 
+def content(msg: Message) -> [None, str]:
+    text_to_return = msg.text
+
+    if msg.text is None:
+        return None
+    if " " in text_to_return:
+        try:
+            return msg.text.split(None, 1)[1]
+        except IndexError:
+            return None
+    else:
+        return None
+
 @Client.on_message(filters.command("bug"))
 async def bug(bot, message):
     if message.chat.username:
