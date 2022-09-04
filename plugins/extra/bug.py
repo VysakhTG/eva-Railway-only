@@ -27,7 +27,7 @@ async def bug(bot, message):
     user_id = message.from_user.id
     if bugs:
             await message.reply_text(
-                f"<b>ʙᴜɢ ʀᴇᴩᴏʀᴛ : </b>\n\n"
+                f"<b>ʙᴜɢ ʀᴇᴩᴏʀᴛ : {bugs}</b>\n\n"
                 "<b>» ʙᴜɢ sᴜᴄᴄᴇssғᴜʟʟʏ ʀᴇᴩᴏʀᴛᴇᴅ ᴀᴛ sᴜᴩᴩᴏʀᴛ ᴄʜᴀᴛ !</b>",
                 reply_markup=InlineKeyboardMarkup(
                     [[InlineKeyboardButton("• ᴄʟᴏsᴇ •", callback_data=f"close_reply")]]
