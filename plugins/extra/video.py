@@ -35,7 +35,7 @@ def get_text(message: Message) -> [None, str]:
         return None
 
 
-@Client.on_message(filters.command(["vsong", "video"]))
+@Client.on_message(filters.command(["vsong"]))
 async def ytmusic(client, message: Message):
     urlissed = get_text(message)
     user_id = message.from_user.id
