@@ -3,13 +3,12 @@ import re
 import sys
 import asyncio 
 import logging 
-from database import db 
-from config import Config, temp
+from database.users_chats_db import db
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, Message 
 from pyrogram.errors.exceptions.bad_request_400 import AccessTokenExpired, AccessTokenInvalid
 from pyrogram.errors import FloodWait
-from config import Config
+from info import API_ID, API_HASH
 from translation import Translation
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -20,8 +19,8 @@ SESSION_STRING_SIZE = 351
 
 class CLIENT: 
   def __init__(self):
-     self.api_id = Config.API_ID
-     self.api_hash = Config.API_HASH
+     self.api_id = API_ID
+     self.api_hash = API_HASH
     
   def client(self, data, user=None):
      if user == None and data.get('is_bot') == False:
