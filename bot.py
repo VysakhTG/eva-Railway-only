@@ -12,7 +12,7 @@ from pyrogram import Client, __version__
 from pyrogram.raw.all import layer
 from database.ia_filterdb import Media
 from database.users_chats_db import db
-from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_STR
+from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_STR, LOG_CH
 from utils import temp
 from typing import Union, Optional, AsyncGenerator
 from pyrogram import types
@@ -44,6 +44,7 @@ class Bot(Client):
         temp.B_NAME = me.first_name
         self.username = '@' + me.username
         logging.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}.")
+        await client.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
         logging.info(LOG_STR)
 
     async def stop(self, *args):
