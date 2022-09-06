@@ -10,4 +10,4 @@ async def adelete(bot, message):
           return
        else:
           await asyncio.sleep(5)
-          await bot.delete_message
+          await bot.delete_messages(chat_id, message_id)
