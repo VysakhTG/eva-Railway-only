@@ -1,7 +1,7 @@
 import asyncio
 from info import ADMINS
 from os import environ
-from pyrogram import Client, filters, idle
+from pyrogram import Client, filters, Message, idle
 
 @Client.on_message(filters.command(["adelete"])) 
 async def adelete(bot, message):
