@@ -6,7 +6,7 @@ from info import ADMINS
 
 @Client.on_message(filters.private & filters.command(["forward"]))
 async def forward(client, message): 
-    msg = await client.send_message(message.chat.id, "**Forward any message from the Target channel\nBot should be admin at both the Channels**") 
+    msg = await bot.ask(chat_id=query.message.chat.id, text="<b>❪ SET TARGET CHAT ❫\n\nForward a message from Your target chat</b>")
     t_chat = msg.forward_from_chat
     msg1 = await client.send_message(message.chat.id, "**Send Starting Message From Where you want to Start forwarding**") 
     msg2 = await client.send_message(message.chat.id, "**Send Ending Message from same chat**") 
