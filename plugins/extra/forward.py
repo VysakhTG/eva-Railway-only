@@ -9,8 +9,8 @@ from info import ADMINS
 async def forward(client, message): 
     msg = await client.send_message(chat_id=message.chat.id, text="<b>❪ SET TARGET CHAT ❫\n\nForward a message from Your target chat</b>")
     t_chat = message.forward_from_chat
-    msg1 = await bot.ask(chat_id=query.message.chat.id, text="<b>Send Starting Message From Where you want to Start forwarding</b>")
-    msg2 = await bot.ask(chat_id=query.message.chat.id, text="<b>Send Ending Message from same cha</b>")
+    msg1 = await client.send_message(chat_id=message.chat.id, text="<b>Send Starting Message From Where you want to Start forwarding</b>")
+    msg2 = await client.send_message(chat_id=message.chat.id, text="<b>Send Ending Message from same cha</b>")
     # print(msg1.forward_from_message_id, msg1.forward_from_chat.id, msg1.forward_from_message_id) 
     i_chat = msg1.forward_from_chat
     s_msg = int(msg1.forward_from_message_id)
