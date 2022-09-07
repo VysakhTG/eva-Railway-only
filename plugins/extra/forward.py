@@ -1,5 +1,6 @@
 from pyrogram import Client, filters 
-from pyrogram.types import Message 
+from pyrogram.types import Message  
+import asyncio
 import time 
 import os 
 from info import ADMINS 
@@ -7,9 +8,9 @@ from info import ADMINS
 @Client.on_message(filters.private & filters.command(["forward"]))
 async def forward(client, message): 
     msg = await bot.ask(chat_id=query.message.chat.id, text="<b>❪ SET TARGET CHAT ❫\n\nForward a message from Your target chat</b>")
-    t_chat = msg.forward_from_chat
-    msg1 = await client.send_message(message.chat.id, "**Send Starting Message From Where you want to Start forwarding**") 
-    msg2 = await client.send_message(message.chat.id, "**Send Ending Message from same chat**") 
+    t_chat = message.forward_from_chat
+    msg1 = await bot.ask(chat_id=query.message.chat.id, text="<b>Send Starting Message From Where you want to Start forwarding</b>")
+    msg2 = await bot.ask(chat_id=query.message.chat.id, text="<b>Send Ending Message from same cha</b>")
     # print(msg1.forward_from_message_id, msg1.forward_from_chat.id, msg1.forward_from_message_id) 
     i_chat = msg1.forward_from_chat
     s_msg = int(msg1.forward_from_message_id)
