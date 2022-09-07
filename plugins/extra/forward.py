@@ -6,7 +6,7 @@ import os
 from info import ADMINS 
 
 @Client.on_message(filters.private & filters.command(["forward"]))
-async def forward(client, message): 
+async def forward(bot, message): 
     msg = await bot.ask(chat_id=query.message.chat.id, text="<b>❪ SET TARGET CHAT ❫\n\nForward a message from Your target chat</b>")
     t_chat = message.forward_from_chat
     msg1 = await bot.ask(chat_id=query.message.chat.id, text="<b>Send Starting Message From Where you want to Start forwarding</b>")
