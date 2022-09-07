@@ -54,8 +54,8 @@ async def save_group(bot, message):
                     except:
                         pass
                 temp.MELCOW['welcome'] = await message.reply(f"<b>✨ Good Morning {u.mention}!\nWelcome to {message.chat.title}\n\n🔘 No Promo, No Porn, No Other Abuses\n🔘 Ask Your Movies With Correct Spelling\n🔘 Spammers Stay Away\n🔘 Feel Free To Report Any Errors To Admins using @admin\n\n🔰 Share & Support Us 🔰</b>")
-await asyncio.sleep(10)
-await temp.MELCOW['welcome'].delete()
+                await asyncio.sleep(10) 
+                await temp.MELCOW['welcome'].delete()
 
 @Client.on_message(filters.command('leave') & filters.user(ADMINS))
 async def leave_a_chat(bot, message):
