@@ -44,7 +44,8 @@ class Bot(Client):
         temp.B_NAME = me.first_name
         self.username = '@' + me.username
         logging.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}.")
-        await self.send_message(LOG_CHANNEL, (f"🤖 Bot Restarted!"))
+        k = await self.send_message(LOG_CHANNEL, (f"🤖 Bot Restarted!"))
+            await k.pin()
         logging.info(LOG_STR)
 
     async def stop(self, *args):
