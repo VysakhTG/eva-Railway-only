@@ -37,8 +37,8 @@ async def bug(bot, message):
             await bot.send_message(LOG_CHANNEL, script.LOG_TEXT_B.format(bugs, message.from_user.mention, message.from_user.id))
     else: 
         ms = await message.reply_text("ɴᴏ ʙᴜɢ ᴛᴏ ʀᴇᴩᴏʀᴛ !")
-             await asyncio.sleep(10)
-             await ms.delete()
+        await asyncio.sleep(10)
+        await ms.delete()
 @Client.on_callback_query(filters.regex("close_reply"))
 async def close_reply(msg, CallbackQuery):
     await CallbackQuery.message.delete()
