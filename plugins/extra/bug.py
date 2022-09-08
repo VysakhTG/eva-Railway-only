@@ -38,6 +38,7 @@ async def bug(bot, message):
     else: 
         ms = await message.reply_text("ɴᴏ ʙᴜɢ ᴛᴏ ʀᴇᴩᴏʀᴛ !")
         await asyncio.sleep(10)
+        await message.delete()
         await ms.delete()
 @Client.on_callback_query(filters.regex("close_reply"))
 async def close_reply(msg, CallbackQuery):
