@@ -35,13 +35,14 @@ def content(msg: Message) -> [None, str]:
         return None
 
 @Client.on_message(filters.private & filters.command("caption"))
-async def start(bot, message):
+async def start(bot, message): 
+    caption = content(message)
     await message.reply(f"Hello {message.from_user.mention},\nI will edit channel message's captions.\nAdd me to your channel with necessary permissions.")
 
 @Client.on_message(filters.channel & filters.document) #add more filters if you want.
 async def caption(bot, message):
    try:
-       await message.edit(CAPTION.format(name=await get_caption(message.document.file_name),    
+       await message.edit(caption(name=await get_caption(message.document.file_name),    
                                          size=await get_size(message.document.file_size))
                           )
    except Exception as e:
