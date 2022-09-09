@@ -22,8 +22,7 @@ async def get_caption(name):
     return newcap 
 
 @Client.on_message(filters.private & filters.command("caption"))
-async def start(bot, message): 
-    caption = content(message)
+async def start(bot, message):
     await message.reply(f"Hello {message.from_user.mention},\nI will edit channel message's captions.\nAdd me to your channel with necessary permissions.")
 
 @Client.on_message(filters.channel & filters.document) #add more filters if you want.
