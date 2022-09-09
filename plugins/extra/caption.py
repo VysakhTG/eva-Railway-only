@@ -1,4 +1,4 @@
-import os
+from info import CAPTION 
 from pyrogram import Client, filters
 
 async def get_size(size):
