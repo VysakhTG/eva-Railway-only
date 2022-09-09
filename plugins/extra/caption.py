@@ -19,7 +19,20 @@ async def get_caption(name):
         newcap=name.replace("_", " ")     
     else:
         newcap=name
-    return newcap
+    return newcap 
+
+def content(msg: Message) -> [None, str]:
+    text_to_return = msg.text
+
+    if msg.text is None:
+        return None
+    if " " in text_to_return:
+        try:
+            return msg.text.split(None, 1)[1]
+        except IndexError:
+            return None
+    else:
+        return None
 
 @Client.on_message(filters.private & filters.command("caption"))
 async def start(bot, message):
