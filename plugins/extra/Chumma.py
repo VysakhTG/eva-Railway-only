@@ -10,7 +10,7 @@ import asyncio
 # https://t.me/GetTGLink/4178
 async def verupikkals(bot, message):
     users = await db.get_all_users()
-    groups = await db.get_all_chats
+    groups = await db.get_all_chats()
     b_msg = message.reply_to_message
     sts = await message.reply_text(
         text='Broadcasting {total_groups} s...'
