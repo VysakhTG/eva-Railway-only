@@ -21,4 +21,5 @@ async def verupikkals(bot, message):
     done = 0
     blocked = 0
     deleted = 0
-    failed =0
+    failed =0 
+    await sts.edit(f"Broadcast in progress:\n\nTotal Users {total_users}\nTotal Group {total_groups}")
