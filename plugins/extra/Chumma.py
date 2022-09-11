@@ -6,7 +6,7 @@ from info import ADMINS
 from utils import broadcast_messages
 import asyncio
         
-start_time = time.time()
+    start_time = time.time()
     total_users = await db.total_users_count()
     total_groups = await db.total_chat_count()
     done = 0
