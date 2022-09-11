@@ -16,7 +16,7 @@ async def verupikkals(bot, message):
     )
     start_time = time.time()
     total_users = await db.total_users_count()
-    total_groups = await db.total_groups_count()
+    total_groups = await db.total_chat_count()
     done = 0
     blocked = 0
     deleted = 0
