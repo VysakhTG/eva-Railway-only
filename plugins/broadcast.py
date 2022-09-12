@@ -25,8 +25,8 @@ async def verupikkals(bot, message):
     failed =0
 
     success = 0
-    async for user in users:
-        pti, sh = await broadcast_messages(int(user['id']), b_msg)
+    async for group in groups:
+        pti, sh = await broadcast_messages(int(group['id']), b_msg)
         if pti:
             success += 1
         elif pti == False:
