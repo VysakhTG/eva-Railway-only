@@ -1,6 +1,6 @@
 from pyrogram import filters, Client
 from pyrogram.types import Message 
-from plugins.helper_functions.extract_user import admins_only, get_text
+from extrahelp import admins_only, get_text
 def content(msg: Message) -> [None, str]:
     text_to_return = msg.text
 
