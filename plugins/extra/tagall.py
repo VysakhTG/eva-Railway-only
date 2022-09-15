@@ -1,6 +1,6 @@
 from pyrogram import filters, Client
 
-@client.on_message(filters.command("tagall")) 
+@Client.on_message(filters.command("tagall")) 
 async def tagall(client, message):
     await message.reply("`Processing.....`")
     sh = get_text(message)
