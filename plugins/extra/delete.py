@@ -2,7 +2,7 @@ from pyrogram import Client, filters
 
 
 # Delete Service Messages
-@Client.on_message(filters.group & filters.command("delete"))
+@Client.on_message(filters.group & filters.command("deletee"))
 async def delete_events(bot, msg):
     try:
         chat_member = await bot.get_chat_member(msg.chat.id, "self")
