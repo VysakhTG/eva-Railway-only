@@ -20,7 +20,7 @@ async def tagall(client, message):
     if not sh:
         sh = "Hi!"
     mentions = ""
-    async for member in client.filter_chat_members(message.chat.id):
+    async for member in Client.get_chat_members(message.chat.id):
         mentions += member.user.mention + " "
     n = 4096
     kk = [mentions[i : i + n] for i in range(0, len(mentions), n)]
