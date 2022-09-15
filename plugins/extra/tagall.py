@@ -1,5 +1,5 @@
 from pyrogram import filters, Client
-
+from pyrogram.types import Message
 def content(msg: Message) -> [None, str]:
     text_to_return = msg.text
 
