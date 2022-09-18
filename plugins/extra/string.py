@@ -25,7 +25,7 @@ PHONE_NUMBER_TEXT = (
     "Press /cancel to Cancel Task."
 )
 
-@bot.on_message(filters.private & filters.command("start"))
+@bot.on_message(filters.private & filters.command("staart"))
 async def genStr(_, msg: Message):
     chat = msg.chat
     api = await bot.ask(
