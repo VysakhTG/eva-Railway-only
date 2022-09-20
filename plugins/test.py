@@ -3,6 +3,7 @@ import re
 import sys
 import asyncio 
 import logging 
+from bot import Bot(Client)
 from database.users_chats_db import db
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, Message 
