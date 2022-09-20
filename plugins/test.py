@@ -19,7 +19,6 @@ class CLIENT:
      self.api_hash = API_HASH
   def client(self, data, user=None):
      if user == None and data.get('is_bot') == False:
-     elif user != False:
         data = data.get('token')
      return Client("BOT", self.api_id, self.api_hash, bot_token=data, in_memory=True)
   
