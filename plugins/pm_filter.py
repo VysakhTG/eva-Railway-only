@@ -463,6 +463,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         ) 
+    elif query.data =="addbot":
+     await query.message.delete()
+     text = await CLIENT.add_bot(client, query)
+     if text != True: return
+     await query.message.reply_text(
+        "<b>bot token successfully added to db</b>",
+        reply_markup=InlineKeyboardMarkup(buttons)
+        )
     elif query.data == "nexxxt":
         buttons = [[
             InlineKeyboardButton('ʀᴇᴘᴏʀᴛ', callback_data='report'),
