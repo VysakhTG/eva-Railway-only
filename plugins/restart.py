@@ -4,9 +4,8 @@ import sys
 
 @Client.on_message(filters.private & filters.command(['restart']) & filters.user(ADMINS))
 async def restart(client, message):
-    msg = await message.reply_text(
-        text="<i>Trying to restarting.....</i>"
-    )
+    msg = await message.reply_text("Trying to restarting....."
+    )  
     await asyncio.sleep(5)
     await msg.edit("<i>Server restarted successfully ✅</i>")
     os.execl(sys.executable, sys.executable, *sys.argv)
