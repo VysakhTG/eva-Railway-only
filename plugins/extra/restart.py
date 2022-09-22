@@ -1,6 +1,7 @@
 from pyrogram import filters, Client
 from info import ADMINS
 import sys
+Import asyncio 
 
 @Client.on_message(filters.private & filters.command(['restart']))
 async def restart(client, message):
