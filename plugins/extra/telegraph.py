@@ -1,5 +1,6 @@
 import os 
-import aiofiles
+import aiofiles 
+from PIL import Image
 from aiofiles import os 
 from html_telegraph_poster import TelegraphPoster
 from pyrogram import Client, filters, Message
