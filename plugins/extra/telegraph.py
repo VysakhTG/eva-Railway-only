@@ -10,7 +10,7 @@ size_error = "Files with size more than 5 MB are not accepted."
 status_text = "Converting and Uploading..."
 
 @Client.on_message(filters.command(["telegraph"]))
-async def telegraph(message: Message):
+async def telegraph(client, message):
     user_id = message.from_user.id
     message_id = message.message_id
     name_format = f"{user_id}_{message_id}" 
