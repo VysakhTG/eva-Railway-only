@@ -12,7 +12,7 @@ status_text = "Converting and Uploading..."
 @Client.on_message(filters.command(["telegraph"]))
 async def telegraph(client, message):
     user_id = message.from_user.id
-    message_id = message.message_id
+    message_id = message.message.id
     name_format = f"{user_id}_{message_id}" 
     replied = message.reply_to_message 
     if not replied:
