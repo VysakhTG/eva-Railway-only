@@ -6,7 +6,7 @@ from html_telegraph_poster import TelegraphPoster
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, CallbackQuery
 from telegraph import upload_file 
-from pyrogram.types import userge, Message, config, pool
+from pyrogram.types import Message
 
 _T_LIMIT = 5242880 
 
