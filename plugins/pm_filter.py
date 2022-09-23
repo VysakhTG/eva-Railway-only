@@ -440,6 +440,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('✚ Add User bot ✚', callback_data='addbot')
         ], [
             InlineKeyboardButton('SETTINGS', callback_data='settings')
+        ], [
             InlineKeyboardButton('◁', callback_data='nexxt'),
             InlineKeyboardButton('• ʜᴏᴍᴇ •', callback_data='start'),
             InlineKeyboardButton('▷', callback_data='nexxxt')
