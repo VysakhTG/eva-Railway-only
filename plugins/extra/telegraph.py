@@ -1,5 +1,8 @@
-import os
-from pyrogram import Client, filters
+import os 
+import aiofiles
+from aiofiles import os 
+
+from pyrogram import Client, filters, Message
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, CallbackQuery
 from telegraph import upload_file
 
@@ -7,46 +10,82 @@ from telegraph import upload_file
 async def telegraph(client, message):
     replied = message.reply_to_message
     if not replied:
-        await message.reply("Reply to a supported media file")
+        await message.err("reply to media or text")
         return
-    if not (
-        (replied.photo and replied.photo.file_size <= 5242880)
-        or (replied.animation and replied.animation.file_size <= 5242880)
-        or (
-            replied.video
-            and replied.video.file_name.endswith(".mp4")
-            and replied.video.file_size <= 5242880
-        )
-        or (
-            replied.document
+    if not ((replied.photo and replied.photo.file_size <= _T_LIMIT)
+            or (replied.animation and replied.animation.file_size <= _T_LIMIT)
+            or (replied.video and replied.video.file_name.endswith('.mp4')
+                and replied.video.file_size <= _T_LIMIT)
+            or (replied.sticker and replied.sticker.file_name.endswith('.webp'))
+            or replied.text
+            or (replied.document
+                and replied.document.file_name.endswith(
+                    ('.jpg', '.jpeg', '.png', '.gif', '.mp4', '.html', '.txt', '.py'))
+                and replied.document.file_size <= _T_LIMIT)):
+        await message.err("not supported!")
+        return
+    await message.edit("`processing...`")
+    if (replied.text
+        or (replied.document
             and replied.document.file_name.endswith(
-                (".jpg", ".jpeg", ".png", ".gif", ".mp4"),
+            ('.html', '.txt', '.py')))):
+        if replied.document:
+            dl_loc = await message.client.download_media(
+                message=message.reply_to_message,
+                file_name=config.Dynamic.DOWN_PATH,
+                progress=progress,
+                progress_args=(message, "trying to download")
             )
-            and replied.document.file_size <= 5242880
-        )
-    ):
-        await message.reply("Not supported!")
+            async with aiofiles.open(dl_loc, "r") as jv:
+                text = await jv.read()
+            header = message.input_str
+            if not header:
+                header = "Pasted content by @theuserge"
+            await os.remove(dl_loc)
+        else:
+            content = message.reply_to_message.text.html
+            if "|" in content and not content.startswith("<"):
+                content = content.split("|", maxsplit=1)
+                header = content[0]
+                text = content[1]
+            else:
+                text = content
+                header = "Pasted content by @theuserge"
+        t_url = await pool.run_in_thread(post_to_telegraph)(header, text.replace("\n", "<br>"))
+        jv_text = f"**[Here Your Telegra.ph Link!]({t_url})**"
+        await message.edit(text=jv_text, disable_web_page_preview=True)
         return
-    download_location = await client.download_media(
+    dl_loc = await message.client.download_media(
         message=message.reply_to_message,
-        file_name="root/downloads/",
+        file_name=config.Dynamic.DOWN_PATH,
+        progress=progress,
+        progress_args=(message, "trying to download")
     )
+    if replied.sticker:
+        img = Image.open(dl_loc).convert('RGB')
+        img.save(f'{config.Dynamic.DOWN_PATH}/userge.png', 'png')
+        await os.remove(dl_loc)
+        dl_loc = f'{config.Dynamic.DOWN_PATH}/userge.png'
+    await message.edit("`uploading to telegraph...`")
     try:
-        response = upload_file(download_location)
-    except Exception as document:
-        await message.reply(message, text=document)
+        response = await pool.run_in_thread(upload_file)(dl_loc)
+    except Exception as t_e:
+        await message.err(str(t_e))
     else:
-        await message.reply(
-            f"<b>Link:-</b>\n\n <code>https://telegra.ph{response[0]}</code>",
-            quote=True,
-            reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(text="open link", url=f"https://telegra.ph{response[0]}"),
-                    InlineKeyboardButton(text="share link", url=f"https://telegram.me/share/url?url=https://telegra.ph{response[0]}")
-                ]
-            ]
-        )
-    )
+        await message.edit(f"**[Here Your Telegra.ph Link!](https://telegra.ph{response[0]})**")
     finally:
-        os.remove(download_location)
+        await os.remove(dl_loc)
+
+
+def post_to_telegraph(a_title: str, content: str) -> str:
+    """ Create a Telegram Post using HTML Content """
+    post_client = TelegraphPoster(use_api=True)
+    auth_name = "@TheUserge"
+    post_client.create_api_token(auth_name)
+    post_page = post_client.post(
+        title=a_title,
+        author=auth_name,
+        author_url="https://telegram.me/theUserge",
+        text=content
+    )
+    return post_page['url']
