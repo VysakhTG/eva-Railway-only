@@ -2,6 +2,7 @@ import os
 import requests
 from PIL import Image
 from pyrogram.types import Message
+from pyrogram import Client, filters 
 
 extensions = ["jpg", "jpeg", "png", "gif", "mp4"]
 size_limit = 5242880
