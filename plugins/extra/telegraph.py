@@ -26,7 +26,7 @@ async def telegraph(client, message):
                 and replied.document.file_name.endswith(
                     ('.jpg', '.jpeg', '.png', '.gif', '.mp4', '.html', '.txt', '.py'))
                 and replied.document.file_size <= _T_LIMIT)):
-        await message.reply_text(("not supported!")
+        await message.reply_text("not supported!")
         return
     await message.edit("`processing...`")
     if (replied.text
