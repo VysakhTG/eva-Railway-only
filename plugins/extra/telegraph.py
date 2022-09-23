@@ -14,7 +14,7 @@ _T_LIMIT = 5242880
 async def telegraph(client, message):
     replied = message.reply_to_message
     if not replied:
-        await message.err("reply to media or text")
+        await message.reply_text("reply to media or text")
         return
     if not ((replied.photo and replied.photo.file_size <= _T_LIMIT)
             or (replied.animation and replied.animation.file_size <= _T_LIMIT)
@@ -26,7 +26,7 @@ async def telegraph(client, message):
                 and replied.document.file_name.endswith(
                     ('.jpg', '.jpeg', '.png', '.gif', '.mp4', '.html', '.txt', '.py'))
                 and replied.document.file_size <= _T_LIMIT)):
-        await message.err("not supported!")
+        await message.reply_text(("not supported!")
         return
     await message.edit("`processing...`")
     if (replied.text
