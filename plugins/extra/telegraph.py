@@ -3,6 +3,7 @@ import requests
 from PIL import Image
 from pyrogram.types import Message
 from pyrogram import Client, filters 
+from pyrogram.types.messages_and_media import message
 
 extensions = ["jpg", "jpeg", "png", "gif", "mp4"]
 size_limit = 5242880
@@ -12,7 +13,7 @@ status_text = "Converting and Uploading..."
 @Client.on_message(filters.command(["telegraph"]))
 async def telegraph(client, message):
     user_id = message.from_user.id
-    message_id = message.chat_id
+    message_id = message.message_id
     name_format = f"{user_id}_{message_id}" 
     replied = message.reply_to_message 
     if not replied:
