@@ -16,7 +16,8 @@ async def telegraph(message: Message):
     name_format = f"{user_id}_{message_id}" 
     replied = message.reply_to_message 
     if not replied:
-        await message.reply_text("𝚁𝙴𝙿𝙻𝚈 𝚃𝙾 𝙰 𝙿𝙷𝙾𝚃𝙾 𝙾𝚁 𝚅𝙸𝙳𝙴𝙾 𝚄𝙽𝙳𝙴𝚁 𝟻𝙼𝙱.")
+        await message.reply_text("𝚁𝙴𝙿𝙻𝚈 𝚃𝙾 𝙰 𝙿𝙷𝙾𝚃𝙾 𝙾𝚁 𝚅𝙸𝙳𝙴𝙾 𝚄𝙽𝙳𝙴𝚁 𝟻𝙼𝙱.") 
+        return
     if message.document:
         extension = message.document.file_name[-3:]
         if extension not in extensions:
