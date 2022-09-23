@@ -1,10 +1,12 @@
 import os 
 import aiofiles
 from aiofiles import os 
-
+from html_telegraph_poster import TelegraphPoster
 from pyrogram import Client, filters, Message
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, CallbackQuery
 from telegraph import upload_file
+
+_T_LIMIT = 5242880 
 
 @Client.on_message(filters.private & filters.command(["telegraph"]))
 async def telegraph(client, message):
