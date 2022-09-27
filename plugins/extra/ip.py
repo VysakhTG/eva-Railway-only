@@ -5,7 +5,7 @@ from datetime import datetime
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-@Client.on_message(filters.private & filters.command(['ip'])
+@Client.on_message(filters.private & filters.command(['ip']))
 async def ip(_, message): 
     searchip = message.text.split(" ", 1)
     if len(searchip) == 1:
