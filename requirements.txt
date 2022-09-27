@@ -31,4 +31,7 @@ tswift
 googletrans==4.0.0-rc1
 gtts
 future
+Flask==1.1.2
+requests==2.25.1
+gunicorn==20.0.4
 
