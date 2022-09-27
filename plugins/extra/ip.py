@@ -6,7 +6,7 @@ from pyrogram import Client, filters
 from info import BOT_TOKEN, ADMINS
 
 @Client.on_message(filters.private & filters.command(['ip'])
-async def ip(client, message): 
+async def ip_inform(client, message): 
     headers_list = request.headers.getlist("X-Forwarded-For")
     user_ip = headers_list[0] if headers_list else request.remote_addr
     url = f"http://ip-api.com/json/{user_ip}?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,offset,currency,isp,org,as,asname,reverse,mobile,proxy,hosting,query"
