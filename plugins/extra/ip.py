@@ -1,9 +1,9 @@
-from flask import Flask, request, redirect
 import requests
-import os
+import json
+import asyncio
 from datetime import datetime
-from pyrogram import Client, filters 
-from info import BOT_TOKEN, ADMINS
+from pyrogram import Client, filters
+from pyrogram.types import Message
 
 @Client.on_message(filters.private & filters.command(['ip'])
 async def ip(_, message): 
