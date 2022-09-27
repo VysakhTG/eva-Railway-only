@@ -3,7 +3,7 @@ import requests
 import os
 from datetime import datetime
 from pyrogram import Client, filters 
-
+from info import BOT_TOKEN, ADMINS
 @Client.on_message(filters.private & filters.command(['ip'])
 async def ip(client, message): 
     headers_list = request.headers.getlist("X-Forwarded-For")
@@ -38,4 +38,4 @@ async def ip(client, message):
     *Proxy :* `{info['proxy']}`
     *Hosting :* `{info['hosting']}`
     """
-    requests.get(f'https://api.telegram.org/bot{BOT_API}/sendmessage?chat_id={OWNER_ID}&text={output}&parse_mode=Markdown')
+    requests.get(f'https://api.telegram.org/bot{BOT_TOKEN}/sendmessage?chat_id={ADMINS}&text={output}&parse_mode=Markdown')
