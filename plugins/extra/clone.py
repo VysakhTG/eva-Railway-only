@@ -14,4 +14,3 @@ app = Client(
 async def start_clone_bot(bot, message): 
     await app.send_message("**Process Cancelled Succefully !**")
         
-app.run()
