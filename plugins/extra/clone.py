@@ -12,5 +12,5 @@ app = Client(
 
 @Client.on_message(filters.command("startbot"))
 async def start_clone_bot(bot, message): 
-    await app.send_message("**Process Cancelled Succefully !**")
+    await app.send_message(text ="**Process Cancelled Succefully !**")
         
