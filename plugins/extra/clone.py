@@ -19,6 +19,7 @@ class CLIENT:
   def __init__(self):
      self.api_id = API_ID
      self.api_hash = API_HASH
+     self.bot_token = bot_token
   def client(self, data, user=None):
      if user == None and data.get('is_bot') == False:
         data = data.get('token')
