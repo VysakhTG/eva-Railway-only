@@ -1,18 +1,26 @@
+import os
+import re 
+import sys
+import asyncio 
+import logging 
+from info import API_ID, API_HASH
+from translation import Translation
 from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, Message 
+from pyrogram.errors.exceptions.bad_request_400 import AccessTokenExpired, AccessTokenInvalid
+from pyrogram.errors import FloodWait
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
-api_id = 14406195
-api_hash = "0e8c9f37d836042b5b2195ab79d68c76"
-bot_token = "5568799979:AAHwIEf4vVBv40FxGa5f-9h4PceQD4hFy5g"
+BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)]\[buttonurl:/{0,2}(.+?)(:same)?])")
+BOT_TOKEN_TEXT = "<b>1) create a bot using @BotFather\n2) Then you will get a message with bot token\n3) Forward that message to me</b>"
+SESSION_STRING_SIZE = 351
 
-app = Client(
-    "my_bot",
-    api_id=api_id, api_hash=api_hash,
-    bot_token=bot_token
-)
-
-@Client.on_message(filters.command("startbot"))
-async def start_clone_bot(bot, message): 
-    await app.send_message(
-        chat_id=message.chat.id,
-        text ="**Hi !**")
-        
+class CLIENT: 
+  def __init__(self):
+     self.api_id = API_ID
+     self.api_hash = API_HASH
+  def client(self, data, user=None):
+     if user == None and data.get('is_bot') == False:
+        data = data.get('token')
+     return Client("BOT", self.api_id, self.api_hash, bot_token=data, in_memory=True)
