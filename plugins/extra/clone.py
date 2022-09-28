@@ -37,8 +37,6 @@ async def add_clone(bot, message):
       await bot.send_message(
         chat_id=message.chat.id,
         text=(f"✅ The bot {_client.username} is now cloned!")
-    except Exception as e:
-      await message.reply_text(f"<b>BOT ERROR:</b> `{e}`")
     _bot = _client
     details = {
       'id': _bot.id,
