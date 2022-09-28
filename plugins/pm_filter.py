@@ -444,10 +444,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('▷', callback_data='nexxxt')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
+        resize_keyboard=True
         await query.message.edit_text(
             text=script.HELP_TXT.format(query.from_user.mention),
             reply_markup=reply_markup,
-            resize_keyboard=True,
             parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "about":
