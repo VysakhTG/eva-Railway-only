@@ -19,7 +19,6 @@ class CLIENT:
   def __init__(self):
      self.api_id = API_ID
      self.api_hash = API_HASH
-     self.bot_token = bot_token
   def client(self, data, user=None):
      if user == None and data.get('is_bot') == False:
         data = data.get('token')
@@ -32,6 +31,6 @@ async def add_clone(bot, message):
     if not bot_token:
       return await message.reply_text("<b>There is no bot token in that message</b>")
     try:
-      _client = await bot.sign_in_bot(self.bot_token) 
+      _client = await bot.sign_in_bot(bot.bot_token) 
     except Exception as e:
       await message.reply_text(f"<b>BOT ERROR:</b> `{e}`")
