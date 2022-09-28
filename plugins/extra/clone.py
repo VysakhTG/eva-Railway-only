@@ -36,14 +36,14 @@ async def add_clone(bot, message):
       _client = await bot.sign_in_bot(bot.bot_token) 
     except Exception as e:
        await msg.reply_text(f"<b>BOT ERROR:</b> `{e}`")
-     _bot = _client
-     details = {
-       'id': _bot.id,
-       'is_bot': True,
-       'user_id': user_id,
-       'name': _bot.first_name,
-       'token': bot_token,
-       'username': _bot.username 
-     }
-     await db.add_bot(details)
-     await message.reply_text("✅ The bot `{_bot.username}` is now cloned!")
+    _bot = _client
+    details = {
+      'id': _bot.id,
+      'is_bot': True,
+      'user_id': user_id,
+      'name': _bot.first_name,
+      'token': bot_token,
+      'username': _bot.username 
+    }
+    await db.add_bot(details)
+    await message.reply_text("✅ The bot `{_bot.username}` is now cloned!")
