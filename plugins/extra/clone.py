@@ -3,6 +3,7 @@ import re
 import sys
 import asyncio 
 import logging 
+from database.users_chats_db import db
 from info import API_ID, API_HASH
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, Message 
