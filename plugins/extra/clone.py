@@ -26,7 +26,7 @@ class CLIENT:
 
 @Client.on_message((filters.forwarded | (filters.regex("\d[0-9]{8,10}:[0-9A-Za-z_-]{35}")) & filters.text ) & filters.private & filters.incoming)
 async def add_clone(bot, message):
-    bot_token = re.findall(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}', msg.text, re.IGNORECASE)
+    bot_token = re.findall(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}', message.text, re.IGNORECASE)
     bot_token = bot_token[0] if bot_token else None
     if not bot_token:
       return await message.reply_text("<b>There is no bot token in that message</b>")
