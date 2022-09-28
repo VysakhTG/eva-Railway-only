@@ -45,4 +45,3 @@ async def add_clone(bot, message):
         'username': _bot.username 
       }
       await db.add_bot(details)
-      return True
