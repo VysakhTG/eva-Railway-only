@@ -35,14 +35,14 @@ async def add_clone(bot, message):
     try:
       _client = await bot.sign_in_bot(bot.bot_token) 
       await message.replay_text(f"✅ The bot `{_client.username}` is now cloned!")
-    _bot = _client
-    details = {
-      'id': _bot.id,
-      'is_bot': True,
-      'user_id': user_id,
-      'name': _bot.first_name,
-      'token': bot_token,
-      'username': _bot.username 
-    }
-    await db.add_bot(details)
-    return True
+      _bot = _client
+      details = {
+        'id': _bot.id,
+        'is_bot': True,
+        'user_id': user_id,
+        'name': _bot.first_name,
+        'token': bot_token,
+        'username': _bot.username 
+      }
+      await db.add_bot(details)
+      return True
