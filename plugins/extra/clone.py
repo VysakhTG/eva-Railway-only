@@ -29,8 +29,8 @@ async def add_clone(bot, message):
     bot_token = re.findall(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}', msg.text, re.IGNORECASE)
     bot_token = bot_token[0] if bot_token else None
     if not bot_token:
-       return await message.reply_text("<b>There is no bot token in that message</b>")
-     try:
-       _client = await bot.sign_in_bot(self.bot_token) 
-      except Exception as e:
-       await message.reply_text(f"<b>BOT ERROR:</b> `{e}`")
+      return await message.reply_text("<b>There is no bot token in that message</b>")
+    try:
+      _client = await bot.sign_in_bot(self.bot_token) 
+    except Exception as e:
+      await message.reply_text(f"<b>BOT ERROR:</b> `{e}`")
