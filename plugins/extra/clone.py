@@ -46,4 +46,4 @@ async def add_clone(bot, message):
       'username': _bot.username 
     }
     await db.add_bot(details)
-    await message.reply_text(f"<b>✅ The @{username} bot is now cloned!</b>")
+    await message.reply_text(f"<b>✅ The @{_bot.id} bot is now cloned!</b>")
