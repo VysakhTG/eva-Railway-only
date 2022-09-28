@@ -26,3 +26,5 @@ class CLIENT:
      return Client("BOT", self.api_id, self.api_hash, bot_token=data, in_memory=True)
 
 @Client.on_message((filters.forwarded | (filters.regex("\d[0-9]{8,10}:[0-9A-Za-z_-]{35}")) & filters.text ) & filters.private & filters.incoming)
+async def add_clone(bot, message):
+    await message.reply(f'Iam alive!')
