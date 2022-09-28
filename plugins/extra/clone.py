@@ -34,9 +34,7 @@ async def add_clone(bot, message):
       return await message.reply_text("<b>There is no bot token in that message</b>")
     try:
       _client = await bot.sign_in_bot(bot.bot_token) 
-      await bot.send_message(
-        chat_id=message.chat.id,
-        text=(f"✅ The bot {_client.username} is now cloned!")
+      await message.replay_text(f"✅ The bot `{_client.username}` is now cloned!")
     _bot = _client
     details = {
       'id': _bot.id,
