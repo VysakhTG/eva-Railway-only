@@ -34,7 +34,9 @@ async def add_clone(bot, message):
       return await message.reply_text("<b>There is no bot token in that message</b>")
     try:
       _client = await bot.sign_in_bot(bot.bot_token) 
-      await bot.send_message(f"bot connect")
+      await bot.send_message(
+        chat_id=message.chat.id,
+        text=(f"hii"))
     except Exception as e:
       await message.reply_text(f"<b>BOT ERROR:</b> `{e}`")
     _bot = _client
