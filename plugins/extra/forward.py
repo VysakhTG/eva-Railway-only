@@ -11,3 +11,18 @@ async def forward(bot, message):
     from_channel =
     start_skip =
     end_skip =
+    await message.reply_text('**Forwarding Started**')
+    try:
+        for i in range(s_msg, f_msg):
+            try:
+                await bot.copy_message(
+                    chat_id= t_chat,
+                    from_chat_id= i_chat,
+                    message_id= i
+                )
+                time.sleep(2)
+            except Exception:
+                continue
+    except Exception as e:
+        await m.reply_text(str(e))
+    await m.reply_text("Done Forwarding")
