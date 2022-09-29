@@ -6,3 +6,8 @@ import os
 from info import ADMINS 
 
 @Client.on_message(filters.command("broadcast") & filters.user(ADMINS))
+async def forward(bot, message): 
+    to_channel = 
+    from_channel =
+    start_skip =
+    end_skip =
