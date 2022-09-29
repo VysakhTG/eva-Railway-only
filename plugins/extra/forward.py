@@ -24,5 +24,5 @@ async def forward(bot, message):
             except Exception:
                 continue
     except Exception as e:
-        await m.reply_text(str(e))
+        await message.reply_text(str(e))
     await message.reply_text("Done Forwarding")
