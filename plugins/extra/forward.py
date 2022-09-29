@@ -7,10 +7,10 @@ from info import ADMINS
 
 @Client.on_message(filters.command("forward") & filters.user(ADMINS))
 async def forward(bot, message): 
-    to_channel = -1737494519
-    from_channel = -1752475005
-    start_skip = 1
-    end_skip = 516348
+    to_channel = "-1737494519"
+    from_channel = "-1752475005"
+    start_skip = "1"
+    end_skip = "516348"
     await message.reply_text('**Forwarding Started**')
     try:
         for i in range(start_skip, end_skip):
