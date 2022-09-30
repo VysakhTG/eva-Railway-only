@@ -3,13 +3,13 @@ from pyrogram.types import Message
 import asyncio
 import time 
 import os 
-from info import ADMINS 
+from info import ADMINS, CAPTION
 
 TO_CHANNEL = -1737494519
 FROM_CHANNEL = -1752475005
 START_M = -4
 END_M = -2000
- 
+
 @Client.on_message(filters.command("forward") & filters.user(ADMINS))
 async def forward(bot, message): 
     await message.reply_text('**Forwarding Started**\n\nPress /restart to Stop and /log to get log TXT file')
@@ -20,7 +20,7 @@ async def forward(bot, message):
                     chat_id= TO_CHANNEL,
                     from_chat_id= FROM_CHANNEL,
                     message_id= i,
-                    caption=Config.CAPTION
+                    caption=CAPTION
                 )
                 time.sleep(2)
             except Exception:
