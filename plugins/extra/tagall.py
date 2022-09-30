@@ -10,7 +10,7 @@ chatQueue = []
 
 stopProcess = False
 
-@Client.on_message(filters.command(["ping","all"]))
+@Client.on_message(filters.command(["all"]))
 async def everyone(client, message):
   global stopProcess
   try: 
