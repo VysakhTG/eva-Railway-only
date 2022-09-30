@@ -7,8 +7,8 @@ from info import ADMINS
 
 TO_CHANNEL = -1737494519
 FROM_CHANNEL = -1752475005
-START_M = 4
-END_M = 2000
+START_M = -4
+END_M = -2000
  
 @Client.on_message(filters.command("forward") & filters.user(ADMINS))
 async def forward(bot, message): 
