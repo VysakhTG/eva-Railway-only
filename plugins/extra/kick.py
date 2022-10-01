@@ -6,6 +6,9 @@ from pyrogram import Client, enums, filters
 from pyrogram.types import BotCommand, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton, Message
 from pyrogram.errors import FloodWait, RPCError
 
+LOGGER = logging.getLogger(__name__)
+logging.getLogger("pyrogram").setLevel(logging.WARN)
+
 logging.basicConfig(
     level=logging.INFO,
     handlers=[logging.FileHandler('logs.txt'), logging.StreamHandler()],
