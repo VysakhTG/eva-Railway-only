@@ -49,6 +49,4 @@ async def justdoit(text, mode, chat, user, query):
     await Client.delete_messages(chat_id=chat, message_ids=query)
     memberslist = []
     await banbot.ban_chat_member(chat_id=chat, user_id=useraction, until_date=datetime.now() + timedelta(seconds=31))
-            elif mode == 1:
-                await banbot.ban_chat_member(chat_id=chat, user_id=useraction)
             
