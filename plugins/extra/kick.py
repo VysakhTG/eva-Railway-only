@@ -7,7 +7,7 @@ STARTED = 'start removing users...'
 FINISH = 'done, {} users were removed from group'
 ERROR = 'something failed!'
 ADMIN_NEEDED = "i need to be admin!"
-PRIVATE = '''Hi, I'm a robot to help you remove all users from your group.
+
 
 @Client.on_message(filters.group & filters.command("kick_all"))
 def main(_, msg: Message):
