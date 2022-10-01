@@ -33,7 +33,7 @@ Retrieving members of the chat… {}
 Comparing with the admins of the chat… {}
 {} members… {}/{} ({} errors)
     """
-@Client.on_callback_query(filters.regex('kick'))
+@Client.on_callback_query(filters.regex(r'^kick'))
 def NewChat(bot, query):
     logging.info("new chat {}".format(query.chat.id))
     logging.info("getting memebers from {}".format(query.chat.id))
