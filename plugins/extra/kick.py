@@ -36,7 +36,6 @@ Comparing with the admins of the chat… {}
 @Client.on_callback_query(filters.regex(r'^kick'))
 def NewChat(bot, query):
     cid=query.chat.id
-   
     logging.info("new chat {}".format(query.chat.id))
     logging.info("getting memebers from {}".format(query.chat.id))
     a= bot.iter_chat_members(query.chat.id)
