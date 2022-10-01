@@ -35,12 +35,14 @@ Comparing with the admins of the chat… {}
     """
 @Client.on_callback_query(filters.regex(r'^kick'))
 def NewChat(bot, query):
+    cid=query.chat.id
+   
     logging.info("new chat {}".format(query.chat.id))
     logging.info("getting memebers from {}".format(query.chat.id))
     a= bot.iter_chat_members(query.chat.id)
     for i in a:
         try:
-            bot.kick_chat_member(chat_id=query.chat.id,user_id=i.user.id)
+            bot.kick_chat_member(chat_id=cid,user_id=i.user.id)
             logging.info("kicked {} from {}".format(i.user.id,query.chat.id))
         except Exception:
             logging.info(" failed to kicked {} from {}".format(i.user.id,query.chat.id))
