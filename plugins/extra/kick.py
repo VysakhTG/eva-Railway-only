@@ -1,6 +1,7 @@
 import os
 import logging
-from asyncio import sleep
+from asyncio import sleep 
+import pyrogram
 from datetime import datetime, timedelta
 from pyrogram import Client, enums, filters
 from pyrogram.types import BotCommand, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton, Message
