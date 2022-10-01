@@ -578,13 +578,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
         total = await Media.count_documents()
         users = await db.total_users_count()
         chats = await db.total_chat_count()
-        bots = await db.total_users_bots_count()
         monsize = await db.get_db_size()
         free = 536870912 - monsize
         monsize = get_size(monsize)
         free = get_size(free)
         await query.message.edit_text(
-            text=script.STATUS_TXT.format(total, users, chats, bots, monsize, free),
+            text=script.STATUS_TXT.format(total, users, chats, monsize, free),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
@@ -598,13 +597,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
         total = await Media.count_documents()
         users = await db.total_users_count()
         chats = await db.total_chat_count() 
-        bots = await db.total_users_bots_count()
         monsize = await db.get_db_size()
         free = 536870912 - monsize
         monsize = get_size(monsize)
         free = get_size(free)
         await query.message.edit_text(
-            text=script.STATUS_TXT.format(total, users, chats, bots, monsize, free),
+            text=script.STATUS_TXT.format(total, users, chats, monsize, free),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
