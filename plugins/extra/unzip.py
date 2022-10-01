@@ -25,7 +25,7 @@ async def unzip_files(unzipbot, msg):
         await unzipbot.send_message(
             msg.chat.id,
             CHOOSE_MODE,
-            reply_markup=InlineKeyboardMarkup(Data.modes_buttons),
+            reply_markup=InlineKeyboardMarkup(modes_buttons),
             reply_to_message_id=msg.message_id
         )
 
