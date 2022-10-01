@@ -7,7 +7,7 @@ from datetime import datetime
 from pyrogram.errors import FloodWait
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup 
-from UnzipBot.functions import absolute_paths, progress 
+from plugins.helper_functions.unzipfun import absolute_paths, progress 
 
 rabbit_filter = filters.create(lambda _, __, query: query.data.lower() == "rabbit")
 
