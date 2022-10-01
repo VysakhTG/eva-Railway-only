@@ -3,7 +3,7 @@ import logging
 from asyncio import sleep 
 import pyrogram
 from datetime import datetime, timedelta
-from pyrogram import Client, enums, filters
+from pyrogram import Client, enums, filters, idle
 from pyrogram.types import BotCommand, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton, Message
 from pyrogram.errors import FloodWait, RPCError
 
