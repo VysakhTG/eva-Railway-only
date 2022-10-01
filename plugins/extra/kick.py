@@ -50,7 +50,7 @@ async def justdoit(text, mode, chat, user, query):
     memberslist = []
     action = banbot.send_message(chat_id=chat, text="`Processing… ⏳`")
     await action.edit(Text.PROCESSING.format("⏳", "⏳", text, 0, 0, 0))
-    async for member in banbot.get_chat_members(chat_id=chat):
+    async for member in banbot.get_chat_members(self=pyrogram.Client, chat_id=chat):
         memberslist.append(member)
         await action.edit(Text.PROCESSING.format(len(memberslist) + " members found", "⏳", text, 0, 0, 0))
     memberscount = len(memberslist)
