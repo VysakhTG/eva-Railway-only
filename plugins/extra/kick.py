@@ -25,4 +25,4 @@ def main(_, msg: Message):
         except Exception as e:
             msg.reply(ERROR.format(str(e)))
     else:
-        msg.reply(ADMIN_NEEDED)
+        msg.reply_text("i need to be admin")
