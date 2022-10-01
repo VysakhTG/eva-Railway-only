@@ -1,6 +1,9 @@
 from pyrogram import Client, filters 
 from pyrogram.types import Message, User, ChatJoinRequest
 
+TEXT = environ.get("APPROVED_WELCOME_TEXT", "Hello {mention}\nWelcome To {title}\n\nYour Auto Approved")
+
+
 @Client.on_chat_join_request((filters.group | filters.channel))
 async def autoapprove(bot: Client, message: ChatJoinRequest):
     chat=message.chat # Chat
