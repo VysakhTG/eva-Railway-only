@@ -107,7 +107,7 @@ async def being_devil(_, message: Message):
         cid = message.chat.id
         LOGGER.info(f"{starter} started a task in {cid}")
         adminlist = []
-        async for admin in Client.get_chat_members(chat_id=cid, filter=enums.ChatMembersFilter.ADMINISTRATORS):
+        async for admin in Client.get_chat_members(self: "pyrogram.Client", chat_id=cid, filter=enums.ChatMembersFilter.ADMINISTRATORS):
             adminlist.append(admin)
         global adminlist2
         adminlist2 = adminlist.copy()
