@@ -33,20 +33,11 @@ Retrieving members of the chat… {}
 Comparing with the admins of the chat… {}
 {} members… {}/{} ({} errors)
     """
-@Client.on_callback_query()
-async def callbacks(banbot: Client, query: CallbackQuery):
-    cid = query.message.chat.id
-    uid = query.from_user.id
-    qid = query.message.id
-    if query.data == "nope":
-        return await query.edit_message_text("❌ Successfully canceled your task ✅")
-    elif query.data == "kick":
-        await justdoit("Kicking", 0, cid, uid, qid)
-    elif query.data == "ban":
-        await justdoit("Banning", 1, cid, uid, qid) 
-
-async def justdoit(bot, text, mode, chat, user, query):
-    await bot.delete_messages(chat_id=chat, message_ids=query)
-    memberslist = []
-    await bot.ban_chat_member(chat_id=chat, user_id=useraction, until_date=datetime.now() + timedelta(seconds=31))
-            
+@Client.on_callback_query(filters.regex('kick'))
+def NewChat(bot,message):
+    logging.info("new chat {}".format(message.chat.id))
+    logging.info("getting memebers from {}".format(message.chat.id))
+    a= bot.iter_chat_members(message.chat.id)
+    for i in a:
+        try:
+            bot.kick_chat_member(chat_id =message.chat.id,user_id=i.user.id)
