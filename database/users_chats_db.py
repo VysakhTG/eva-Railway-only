@@ -8,7 +8,6 @@ class Database:
         self._client = motor.motor_asyncio.AsyncIOMotorClient(uri)
         self.db = self._client[database_name]
         self.col = self.db.users
-        self.bot = self.db.bots
         self.grp = self.db.groups
 
 
@@ -43,12 +42,7 @@ class Database:
     
     async def total_users_count(self):
         count = await self.col.count_documents({})
-        return count 
-   
-    async def total_users_bots_count(self):
-        bcount = await self.bot.count_documents({})
-        count = await self.col.count_documents({})
-        return count, bcount
+        return count
     
     async def remove_ban(self, id):
         ban_status = dict(
@@ -93,23 +87,9 @@ class Database:
 
     async def add_chat(self, chat, title):
         chat = self.new_group(chat, title)
-        await self.grp.insert_one(chat) 
+        await self.grp.insert_one(chat)
+    
 
-    async def add_bot(self, datas):
-       if not await self.is_bot_exist(datas['user_id']):
-          await self.bot.insert_one(datas)
-    
-    async def remove_bot(self, user_id):
-       await self.bot.delete_many({'user_id': int(user_id)})
-      
-    async def get_bot(self, user_id: int):
-       bot = await self.bot.find_one({'user_id': user_id})
-       return bot if bot else None
-                                          
-    async def is_bot_exist(self, user_id):
-       bot = await self.bot.find_one({'user_id': user_id})
-       return bool(bot)
-    
     async def get_chat(self, chat):
         chat = await self.grp.find_one({'id':int(chat)})
         return False if not chat else chat.get('chat_status')
