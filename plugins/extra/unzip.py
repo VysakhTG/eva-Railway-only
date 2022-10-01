@@ -29,7 +29,7 @@ async def unzip_files(unzipbot, msg):
             reply_to_message_id=msg.message_id
         )
 
-@Client.on_callback_query(tortoise)
+@Client.on_callback_query(filters.regex('tortoise'))
 async def _tortoise(unzipbot, callback_query):
     start = datetime.now()
     msg = callback_query.message.reply_to_message
