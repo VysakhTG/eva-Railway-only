@@ -95,7 +95,7 @@ async def _tortoise(unzipbot, callback_query):
         if os.path.isdir("downloads"):
             shutil.rmtree("downloads")
 
-@Client.on_callback_query(rabbit)
+@Client.on_callback_query(filters.regex('rabbit'))
 async def _rabbit(unzipbot, callback_query):
     start = datetime.now()
     msg = callback_query.message.reply_to_message
