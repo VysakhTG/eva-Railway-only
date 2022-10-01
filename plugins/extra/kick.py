@@ -46,7 +46,7 @@ async def callbacks(banbot: Client, query: CallbackQuery):
         await justdoit("Banning", 1, cid, uid, qid) 
 
 async def justdoit(text, mode, chat, user, query):
-    await banbot.delete_messages(chat_id=chat, message_ids=query)
+    await Client.delete_messages(chat_id=chat, message_ids=query)
     memberslist = []
     action = banbot.send_message(chat_id=chat, text="`Processing… ⏳`")
     await action.edit(Text.PROCESSING.format("⏳", "⏳", text, 0, 0, 0))
