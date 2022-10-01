@@ -29,7 +29,7 @@ async def unzip_files(unzipbot, msg):
             reply_to_message_id=msg.message_id
         )
 
-@Client.on_callback_query(tortoise_filter)
+@Client.on_callback_query(tortoise)
 async def _tortoise(unzipbot, callback_query):
     start = datetime.now()
     msg = callback_query.message.reply_to_message
@@ -95,7 +95,7 @@ async def _tortoise(unzipbot, callback_query):
         if os.path.isdir("downloads"):
             shutil.rmtree("downloads")
 
-@Client.on_callback_query(rabbit_filter)
+@Client.on_callback_query(rabbit)
 async def _rabbit(unzipbot, callback_query):
     start = datetime.now()
     msg = callback_query.message.reply_to_message
