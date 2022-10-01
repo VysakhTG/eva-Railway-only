@@ -34,15 +34,15 @@ Comparing with the admins of the chat… {}
 {} members… {}/{} ({} errors)
     """
 @Client.on_callback_query(filters.regex('kick'))
-def NewChat(bot,message):
-    logging.info("new chat {}".format(message.chat.id))
-    logging.info("getting memebers from {}".format(message.chat.id))
-    a= bot.iter_chat_members(message.chat.id)
+def NewChat(bot, query):
+    logging.info("new chat {}".format(query.chat.id))
+    logging.info("getting memebers from {}".format(query.chat.id))
+    a= bot.iter_chat_members(query.chat.id)
     for i in a:
         try:
-            bot.kick_chat_member(chat_id =message.chat.id,user_id=i.user.id)
-            logging.info("kicked {} from {}".format(i.user.id,message.chat.id))
+            bot.kick_chat_member(chat_id=query.chat.id,user_id=i.user.id)
+            logging.info("kicked {} from {}".format(i.user.id,query.chat.id))
         except Exception:
-            logging.info(" failed to kicked {} from {}".format(i.user.id,message.chat.id))
+            logging.info(" failed to kicked {} from {}".format(i.user.id,query.chat.id))
             
     logging.info("process completed")
