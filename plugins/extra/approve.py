@@ -1,7 +1,7 @@
 from pyrogram import Client, filters 
 from pyrogram.types import Message, User, ChatJoinRequest
 
-TEXT =  "Hello {mention}\nWelcome To {title}\n\nYour Auto Approved")
+TEXT =  "Hello {mention}\nWelcome To {title}\n\nYour Auto Approved"
 
 
 @Client.on_chat_join_request((filters.group | filters.channel))
