@@ -6,6 +6,12 @@ from pyrogram import Client, enums, filters
 from pyrogram.types import BotCommand, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton, Message
 from pyrogram.errors import FloodWait, RPCError
 
+logging.basicConfig(
+    level=logging.INFO,
+    handlers=[logging.FileHandler('logs.txt'), logging.StreamHandler()],
+    format="%(asctime)s - %(levelname)s - %(name)s - %(threadName)s - %(message)s"
+)
+
 class Buttons:
     CONFIRMATION = InlineKeyboardMarkup([
             [
