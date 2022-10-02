@@ -8,7 +8,7 @@ from urllib.parse import quote_plus
 from pyrogram import filters, Client
 from pyrogram.file_id import FileId
 from pyrogram.errors.exceptions.bad_request_400 import ChannelInvalid, UsernameInvalid, UsernameNotModified
-from info import ADMINS, LOG_CHANNEL, unpack_new_file_id
+from info import ADMINS, LOG_CHANNEL
 import re
 import os
 import json
@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 
-@Client.on_message(filters.command(['index']) & filters.user(ADMINS))
+@Client.on_message(filters.command(['forward']) & filters.user(ADMINS))
 async def gen_link_batch(bot, message):
     if " " not in message.text:
         return await message.reply("Use correct format.\nExample <code>/index {from channel first message link} {form channel last message link}")
