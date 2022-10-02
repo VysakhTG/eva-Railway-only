@@ -10,6 +10,8 @@ from pyrogram.types import InlineKeyboardMarkup
 from plugins.helper_functions.unzipfun import absolute_paths, progress 
 
 rabbit_filter = filters.create(lambda _, __, query: query.data.lower() == "rabbit")
+ 
+CHOOSE_MODE = "**CHOOSE MODE ** \n\nChoose a mode from below to start extracting files..."
 
 modes_buttons = [[ 
           InlineKeyboardButton("Tortoise 🐢", callback_data="tortoise"),
@@ -21,13 +23,12 @@ modes_buttons = [[
 @Client.on_message(filters.document & filters.private)
 async def unzip_files(unzipbot, msg):
     file_name = msg.document.file_name
-    if file_name.endswith(('.zip', '.rar')):
-        await unzipbot.send_message(
-            msg.chat.id,
-            CHOOSE_MODE,
-            reply_markup=InlineKeyboardMarkup(modes_buttons),
-            reply_to_message_id=msg.message_id
-        )
+    if file_name.endswith(('.zip', '.rar')): 
+    reply_markup=InlineKeyboardMarkup(modes_buttons
+    await unzipbot.send_message(
+        chat_id=msg.chat.id,
+        reply_markup=reply_markup,
+        text=CHOOSE_MODE)
 
 @Client.on_callback_query(filters.regex('tortoise'))
 async def _tortoise(unzipbot, callback_query):
