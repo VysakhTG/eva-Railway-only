@@ -24,7 +24,7 @@ modes_buttons = [[
 async def unzip_files(unzipbot, msg):
     file_name = msg.document.file_name
     if file_name.endswith(('.zip', '.rar')): 
-    reply_markup=InlineKeyboardMarkup(modes_buttons
+    reply_markup=InlineKeyboardMarkup(modes_buttons)
     await unzipbot.send_message(
         chat_id=msg.chat.id,
         reply_markup=reply_markup,
