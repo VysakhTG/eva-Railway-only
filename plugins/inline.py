@@ -19,7 +19,7 @@ async def inline_users(query: InlineQuery):
         return True
     return False
 
-@Client.on_inline_query("go")
+@Client.on_inline_query()
 async def answer(bot, query):
     """Show search results for given inline query"""
     
