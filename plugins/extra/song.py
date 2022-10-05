@@ -16,9 +16,22 @@ from yt_dlp import YoutubeDL
 import youtube_dl
 import requests
 
+def content(msg: Message) -> [None, str]:
+    text_to_return = msg.text
+
+    if msg.text is None:
+        return None
+    if " " in text_to_return:
+        try:
+            return msg.text.split(None, 1)[1]
+        except IndexError:
+            return None
+    else:
+        return None
+
 @Client.on_message(filters.command(["music","song"]))
 async def ytmusic(client, message: Message):        
-    urlissed = get_text(message)
+    urlissed = content(message)
     if not urlissed:
         await client.send_message(
             message.chat.id,"Invalid Command Syntax, Please Check Help Menu To Know More!")
