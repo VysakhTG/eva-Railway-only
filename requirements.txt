@@ -13,6 +13,7 @@ humanize
 Pillow==9.0.0
 html-telegraph-poster
 ffmpeg-python
+ffmpeg
 psutil
 wheel
 python-arq
@@ -20,9 +21,7 @@ aiohttp==3.6.2
 youtube_dl
 youtube_search_python
 youtube_search
-yt-dlp 
-ffmpeg-python
-ffmpeg 
+yt-dlp  
 wget
 requests
 python-decouple
