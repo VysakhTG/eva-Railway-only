@@ -6,7 +6,7 @@ import humanize
 from PIL import Image
 import time
 from asyncio import sleep
-from database.users_chats_db import db
+from xtra_database import db
 
 PROGRESS_BAR = """\n
 ╭━━━━❰ᴘʀᴏɢʀᴇss ʙᴀʀ❱━➣
