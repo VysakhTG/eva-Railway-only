@@ -7,6 +7,14 @@ from PIL import Image
 import time
 from asyncio import sleep
 
+PROGRESS_BAR = """\n
+╭━━━━❰ᴘʀᴏɢʀᴇss ʙᴀʀ❱━➣
+┣⪼ 🗂️ : {1} | {2}
+┣⪼ ⏳️ : {0}%
+┣⪼ 🚀 : {3}/s
+┣⪼ ⏱️ : {4}
+╰━━━━━━━━━━━━━━━➣ """
+
 async def progress_for_pyrogram(current, total, ud_type, message, start):
 
     now = time.time()
