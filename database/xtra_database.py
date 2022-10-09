@@ -1,9 +1,7 @@
 import re
 from os import environ
 import motor.motor_asyncio
-
-DB_URL = environ.get('DB_URL')
-DB_NAME = environ.get('DB_NAME')
+from info import DATABASE_NAME, DATABASE_URL
 
 class Database:
 
@@ -53,4 +51,4 @@ class Database:
         return user.get('caption', None)
 
 
-db = Database(DB_URL, DB_NAME)
+db = Database(DATABASE_URL, DATABASE_NAME)
