@@ -4,12 +4,9 @@ import os
 import time
 from os import environ
 from pyrogram import Client, filters, enums
-
+from info import temp
 CAPTION = "nokkk"
 PROGRESS_BAR = "\n\n📁 : {b} | {c}\n🚀 : {a}%\n⚡ : {d}/s\n⏱️ : {f}"
-
-class temp(object):
-    THUMBNAIL = environ.get("THUMBNAIL", "")
 
 async def progress_message(current, total, ud_type, message, start):
     now = time.time()
