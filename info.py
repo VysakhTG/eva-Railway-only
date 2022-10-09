@@ -72,5 +72,5 @@ LOG_STR += (f"MAX_LIST_ELM Found, long list will be shortened to first {MAX_LIST
 LOG_STR += f"Your current IMDB template is {IMDB_TEMPLATE}"
 
 class temp(object):
-    THUMBNAIL = environ.get("THUMBNAIL", "")
+    THUMBNAIL = environ.get("THUMBNAIL", "https://telegra.ph/file/c832b9b2cf56637e762e9.jpg")
 
