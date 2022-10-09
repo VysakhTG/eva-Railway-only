@@ -1,5 +1,9 @@
+import re
+from os import environ
 import motor.motor_asyncio
- 
+
+DB_URL = environ.get('DB_URL')
+DB_NAME = environ.get('DB_NAME')
 
 class Database:
 
