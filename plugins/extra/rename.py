@@ -1,6 +1,7 @@
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ForceReply
 from pyrogram.enums import MessageMediaType
 from pyrogram import Client, filters
+from pyrogram.errors import FloodWait
 import os 
 import humanize
 from PIL import Image
@@ -9,6 +10,7 @@ import math
 from asyncio import sleep
 from database.xtra_database import db
 
+FLOOD=10
 PROGRESS_BAR = """\n
 ╭━━━━❰ᴘʀᴏɢʀᴇss ʙᴀʀ❱━➣
 ┣⪼ 🗂️ : {1} | {2}
