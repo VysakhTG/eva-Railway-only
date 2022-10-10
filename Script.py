@@ -14,6 +14,24 @@ class script(object):
 ║╰━━━━━━━━━━━━━━━➣
 ╚══════════════════❍⊱❁۪۪
 """
+    RENAME_TXT """ 🌌 HOW TO SET THUMBNILE
+  
+•> send any picture to automatically set thumbnile.
+•> /delthumb use this command and delete your old thumbnile.
+•> /viewthumb use this command view your current thumbnile.
+
+📑 HOW TO SET CUSTOM CAPTION
+•> /set_caption - set a custom caption
+•> /see_caption - see your custom caption
+•> /del_caption - delete custom caption
+
+Example:- /set_caption 📕 File Name: {filename}
+💾 Size: {filesize}
+⏰ Duration: {duration}
+
+✏️ HOW TO RENAME A FILE
+•> send any file and click rename option and type new file name and 
+ send select [ document, video, audio ]"""
     NEXXT_TXT = """𝙷𝙴𝚈 {}
 𝙷𝙴𝚁𝙴 𝙸𝚂 𝚃𝙷𝙴 𝙷𝙴𝙻𝙿 𝙵𝙾𝚁 𝙼𝚈 𝙲𝙾𝙼𝙼𝙰𝙽𝙳𝚂."""
     NEXXXT_TXT = """𝙷𝙴𝚈 {}
