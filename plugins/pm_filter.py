@@ -491,6 +491,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
+    elif query.data == "rename":
+        await query.message.edit_text(
+            text=script.RENAME_TXT,
+            parse_mode=enums.ParseMode.HTML
+        )
     elif query.data == "source":
         buttons = [[
             InlineKeyboardButton('👩‍🦯 Back', callback_data='about')
