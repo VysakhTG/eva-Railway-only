@@ -425,7 +425,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('ᴍ ғɪʟᴛᴇʀ', callback_data='manuelfilter'), 
             InlineKeyboardButton('ᴀ ғɪʟᴛᴇʀ', callback_data='autofilter')
         ], [
-            InlineKeyboardButton('⚡ RENAME ⚡', callback_data='renamee3')
+            InlineKeyboardButton('⚡', callback_data='thump')
         ], [
             InlineKeyboardButton('ᴄᴏɴɴᴇᴄᴛɪᴏɴ', callback_data='coct'),
             InlineKeyboardButton('ᴛʀᴀɴꜱʟᴀᴛᴏʀ', callback_data='translator')
@@ -491,7 +491,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
-    elif query.data == "renamee3":
+    elif query.data == "thump":
         await query.message.edit_text(
             text=script.RENAME_TXT,
             parse_mode=enums.ParseMode.HTML
