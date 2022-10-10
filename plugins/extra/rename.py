@@ -103,6 +103,9 @@ async def not_subscribed(_, client, message):
 
 @Client.on_message(filters.private & (filters.document | filters.audio | filters.video))
 async def rename_start(client, message):
+    user = message.from_user
+    if not await db.is_user_exist(user.id):
+        await db.add_user(user.id)
     file = getattr(message, message.media.value)
     filename = file.file_name
     filesize = humanize.naturalsize(file.file_size) 
