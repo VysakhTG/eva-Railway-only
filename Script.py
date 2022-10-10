@@ -14,7 +14,7 @@ class script(object):
 ║╰━━━━━━━━━━━━━━━➣
 ╚══════════════════❍⊱❁۪۪
 """
-    RENAME_TXT """ 🌌 HOW TO SET THUMBNILE
+    RENAME_TXT=""" 🌌 HOW TO SET THUMBNILE
   
 •> send any picture to automatically set thumbnile.
 •> /delthumb use this command and delete your old thumbnile.
