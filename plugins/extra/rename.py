@@ -103,7 +103,7 @@ async def not_subscribed(_, client, message):
          return False 
    return True
 
-@Client.on_message(filters.private & (filters.document | filters.audio | filters.video))
+@Client.on_message(filters.private & (filters.document | filters.video))
 async def rename_start(client, message):
     user = message.from_user
     if not await db.is_user_exist(user.id):
