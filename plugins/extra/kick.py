@@ -16,6 +16,11 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(name)s - %(threadName)s - %(message)s"
 )
 
+STARTED = 'start removing users...'
+FINISH = 'done, {} users were removed from group'
+ERROR = 'something failed!'
+ADMIN_NEEDED = "i need to be admin!"
+
 class Buttons:
     CONFIRMATION = InlineKeyboardMarkup([
             [
@@ -27,23 +32,21 @@ class Buttons:
             ]
         ])
 
-class Text:
-    PROCESSING = """
-Retrieving members of the chat… {}
-Comparing with the admins of the chat… {}
-{} members… {}/{} ({} errors)
-    """
-@Client.on_callback_query(filters.regex(r'^kick'))
-def NewChat(bot, query):
-    cid=query.chat.id
-    logging.info("new chat {}".format(cid))
-    logging.info("getting memebers from {}".format(cid))
-    a= bot.iter_chat_members(cid)
-    for i in a:
+
+@Client.on_callback_query(filters.group & filters.command("kickall"))
+def main(_, msg: Message):
+    chat = msg.chat
+    me = chat.get_member(app.get_me().id)
+    if chat.get_member(msg.from_user.id).can_manage_chat and me.can_restrict_members and me.can_delete_messages:
         try:
-            bot.kick_chat_member(chat_id=cid,user_id=i.user.id)
-            logging.info("kicked {} from {}".format(i.user.id,cid))
-        except Exception:
-            logging.info(" failed to kicked {} from {}".format(i.user.id,cid))
-            
-    logging.info("process completed")
+            msg.reply(STARTED.format(chat.members_count))
+            count_kicks = 0
+            for member in chat.iter_members():
+                if not member.can_manage_chat:
+                    chat.kick_member(member.user.id)
+                    count_kicks += 1
+            msg.reply(FINISH.format(count_kicks))
+        except Exception as e:
+            msg.reply(ERROR.format(str(e)))
+    else:
+        msg.reply(ADMIN_NEEDED)
