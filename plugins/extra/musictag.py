@@ -3,6 +3,7 @@ import io
 import re
 from PIL import Image
 from music_tag import load_file
+from pyromod import listen
 from pyrogram import Client, filters
 
 @Client.on_message(filters.private & filters.audio)
