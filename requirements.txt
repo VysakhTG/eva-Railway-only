@@ -1,5 +1,6 @@
 pyrogram>=2.0.30
 tgcrypto
+pyromod
 hachoir
 dnspython
 pymongo[srv]==3.12.3
