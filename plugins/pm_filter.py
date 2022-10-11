@@ -457,14 +457,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text=script.ABOUT_TXT.format(temp.B_NAME),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
-        ) 
-    elif query.data =="addbot":
-     await query.message.delete()
-     text = await CLIENT.add_bot(client, query)
-     if text != True: return
-     await query.message.reply_text(
-        "<b>bot token successfully added to db</b>",
-        reply_markup=InlineKeyboardMarkup(buttons)
         )
     elif query.data == "nexxxt":
         buttons = [[
@@ -492,8 +484,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "thump":
+        buttons = [[
+            InlineKeyboardButton('👩‍🦯 Back', callback_data='help')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.RENAME_TXT,
+            reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "source":
