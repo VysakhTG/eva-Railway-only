@@ -6,6 +6,11 @@ from music_tag import load_file
 from pyromod import listen
 from pyrogram import Client, filters
 
+if 'CUSTOM_TAG' in os.environ:
+    custom_tag = " [" + os.environ.get("CUSTOM_TAG") + "]"
+else:
+    custom_tag = " "
+
 @Client.on_message(filters.private & filters.audio)
 async def tag(bot, m):
     fname = m.audio.file_name
