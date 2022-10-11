@@ -5,7 +5,7 @@ from PIL import Image
 from music_tag import load_file
 from pyromod import listen
 from pyrogram import Client, filters
-
+from info import CAPTION
 if 'CUSTOM_TAG' in os.environ:
     custom_tag = " [" + os.environ.get("CUSTOM_TAG") + "]"
 else:
