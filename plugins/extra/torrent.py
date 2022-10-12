@@ -19,11 +19,11 @@ def content(msg: Message) -> [None, str]:
         return None
 
 @Client.on_message(filters.command("torrent"))
-def torr_serch(bot, message ) -> None:
+def torr_serch(update: Update, context: CallbackContext) -> None:
     q = content(message)
     try:
-        bot.message.reply_text("Searching results for {q}".format(bot.message.text))
-        url = "https://api.sumanjay.cf/torrent/?query={q}".format(bot.message.text)
+        update.message.reply_text("Searching results for {}".format(update.message.text))
+        url = "https://api.sumanjay.cf/torrent/?query={}".format(update.message.text)
         results = requests.get(url).json()
         print(results)
         for item in results:
@@ -34,14 +34,14 @@ def torr_serch(bot, message ) -> None:
             seed = item.get('seeder')
             size = item.get('size')
             typ= item.get('type')
-            bot.message.reply_text(f"""*Name:* {name}
+            update.message.reply_text(f"""*Name:* {name}
 _Uploaded {age} ago_
 *Seeders:* `{seed}`
 *Leechers:* `{leech}`
 *Size:* `{size}`
 *Type:* {typ}
 *Magnet Link:* `{mag}`""", parse_mode=ParseMode.MARKDOWN)
-        bot.message.reply_text("End of the search results...")
+        update.message.reply_text("End of the search results...")
     except:
-        bot.message.reply_text("""Search results completed...
+        update.message.reply_text("""Search results completed...
 If you've not seen any results, try researching...!""")
