@@ -1,7 +1,9 @@
 import requests
 import logging
-from telegram import *
-from telegram.ext import *
+from pyrogram import Client,filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, Message 
+
+
 
 def content(msg: Message) -> [None, str]:
     text_to_return = msg.text
