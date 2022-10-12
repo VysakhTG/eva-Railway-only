@@ -484,6 +484,23 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
+    elif query.data == "torrent":
+        buttons = [[
+            InlineKeyboardButton("Search YTS", switch_inline_query_current_chat="!yts "),
+            InlineKeyboardButton("Go Inline", switch_inline_query="!yts ")],
+                    [InlineKeyboardButton("Search ThePirateBay", switch_inline_query_current_chat="!pb "),
+                     InlineKeyboardButton("Go Inline", switch_inline_query="!pb ")],
+                    [InlineKeyboardButton("Search 1337x", switch_inline_query_current_chat=""),
+                     InlineKeyboardButton("Go Inline", switch_inline_query="")],
+                    [InlineKeyboardButton("Search Anime", switch_inline_query_current_chat="!a "),
+                     InlineKeyboardButton("GO Inline", switch_inline_query_current_chat="!a ")]
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.RENAME_TXT,
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
     elif query.data == "thump":
         buttons = [[
             InlineKeyboardButton('👩‍🦯 Back', callback_data='help')
