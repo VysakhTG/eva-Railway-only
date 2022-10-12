@@ -26,5 +26,5 @@ class CLIENT:
 bot_token = re.findall(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}', msg.text, re.IGNORECASE)  
   
 @Client.on_message((filters.forwarded | (filters.regex("bot_token")) & filters.text ) & filters.private)
-async def add_bot(self, bot, message):
+async def add_bot(self, message):
     await message.reply("**process cancelled !**")
