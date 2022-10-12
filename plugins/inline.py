@@ -11,6 +11,18 @@ from plugins.extra.torrent import SearchYTS, SearchAnime, Search1337x, SearchPir
 logger = logging.getLogger(__name__)
 cache_time = 0 if AUTH_USERS or AUTH_CHANNEL else CACHE_TIME
 
+DEFAULT_SEARCH_MARKUP = [
+                    [InlineKeyboardButton("Search YTS", switch_inline_query_current_chat="!yts "),
+                     InlineKeyboardButton("Go Inline", switch_inline_query="!yts ")],
+                    [InlineKeyboardButton("Search ThePirateBay", switch_inline_query_current_chat="!pb "),
+                     InlineKeyboardButton("Go Inline", switch_inline_query="!pb ")],
+                    [InlineKeyboardButton("Search 1337x", switch_inline_query_current_chat=""),
+                     InlineKeyboardButton("Go Inline", switch_inline_query="")],
+                    [InlineKeyboardButton("Search Anime", switch_inline_query_current_chat="!a "),
+                     InlineKeyboardButton("GO Inline", switch_inline_query_current_chat="!a ")],
+                    [InlineKeyboardButton("Developer: @AbirHasan2005", url="https://t.me/AbirHasan2005")]
+                ]
+
 async def inline_users(query: InlineQuery):
     if AUTH_USERS:
         if query.from_user and query.from_user.id in AUTH_USERS:
@@ -109,6 +121,22 @@ def get_reply_markup(query):
         ]
         ]
     return InlineKeyboardMarkup(buttons)
+@Client.on_inline_query()
+async def inline_handlers(_, inline: InlineQuery):
+    search_ts = inline.query
+    answers = []
+    if search_ts == "":
+        answers.append(
+            InlineQueryResultArticle(
+                title="Search Something ...",
+                description="Search For Torrents ...",
+                input_message_content=InputTextMessageContent(
+                    message_text="Search for Torrents from Inline!",
+                    parse_mode="Markdown"
+                ),
+                reply_markup=InlineKeyboardMarkup(DEFAULT_SEARCH_MARKUP)
+            )
+        )
     elif search_ts.startswith("!pb"):
         query = search_ts.split(" ", 1)[-1]
         if (query == "") or (query == " "):
