@@ -1,30 +1,45 @@
-import os
-import aiohttp
-from requests.utils import requote_uri
+import requests
+import logging
+from telegram import *
+from telegram.ext import *
 
-API_1337x = "https://api.abir-hasan.tk/1337x?query={}&limit={}"
-API_YTS = "https://api.abir-hasan.tk/yts?query={}&limit={}"
-API_PIRATEBAY = "https://api.abir-hasan.tk/piratebay?query={}&limit={}"
-API_ANIME = "https://api.abir-hasan.tk/anime?query={}&limit={}"
-MAX_INLINE_RESULTS = int(os.environ.get("MAX_INLINE_RESULTS", 50))
+def content(msg: Message) -> [None, str]:
+    text_to_return = msg.text
 
-async def Search1337x(query: str):
-    async with aiohttp.ClientSession() as session:
-        async with session.get(requote_uri(API_1337x.format(query, MAX_INLINE_RESULTS))) as res:
-            return (await res.json())["results"] if ((await res.json()).get("results", None) is not None) else [] 
+    if msg.text is None:
+        return None
+    if " " in text_to_return:
+        try:
+            return msg.text.split(None, 1)[1]
+        except IndexError:
+            return None
+    else:
+        return None
 
-async def SearchYTS(query: str):
-    async with aiohttp.ClientSession() as session:
-        async with session.get(requote_uri(API_YTS.format(query, MAX_INLINE_RESULTS))) as res:
-            return (await res.json())["results"] if ((await res.json()).get("results", None) is not None) else []
-
-async def SearchPirateBay(query: str):
-    async with aiohttp.ClientSession() as session:
-        async with session.get(requote_uri(API_PIRATEBAY.format(query, MAX_INLINE_RESULTS))) as res:
-            return (await res.json())["results"] if ((await res.json()).get("results", None) is not None) else []
-
-
-async def SearchAnime(query: str):
-    async with aiohttp.ClientSession() as session:
-        async with session.get(requote_uri(API_ANIME.format(query, MAX_INLINE_RESULTS))) as res:
-            return (await res.json())["results"] if ((await res.json()).get("results", None) is not None) else []
+@Client.on_message(filters.command("torrent"))
+def torr_serch(bot, message ) -> None:
+    q = content(message)
+    try:
+        bot.message.reply_text("Searching results for {q}".format(bot.message.text))
+        url = "https://api.sumanjay.cf/torrent/?query={q}".format(bot.message.text)
+        results = requests.get(url).json()
+        print(results)
+        for item in results:
+            age = item.get('age')
+            leech = item.get('leecher')
+            mag = item.get('magnet')
+            name = item.get('name')
+            seed = item.get('seeder')
+            size = item.get('size')
+            typ= item.get('type')
+            bot.message.reply_text(f"""*Name:* {name}
+_Uploaded {age} ago_
+*Seeders:* `{seed}`
+*Leechers:* `{leech}`
+*Size:* `{size}`
+*Type:* {typ}
+*Magnet Link:* `{mag}`""", parse_mode=ParseMode.MARKDOWN)
+        bot.message.reply_text("End of the search results...")
+    except:
+        bot.message.reply_text("""Search results completed...
+If you've not seen any results, try researching...!""")
