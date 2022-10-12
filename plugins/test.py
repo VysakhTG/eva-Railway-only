@@ -23,7 +23,7 @@ class CLIENT:
         data = data.get('token')
      return Client("BOT", self.api_id, self.api_hash, bot_token=data, in_memory=True)
 
-bot_token = re.findall(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}', msg.text, re.IGNORECASE)  
+bot_token = re.findall(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}',re.IGNORECASE)  
   
 @Client.on_message((filters.forwarded | (filters.regex("bot_token")) & filters.text ) & filters.private)
 async def add_bot(self, message):
