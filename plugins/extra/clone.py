@@ -46,5 +46,8 @@ async def add_bot(self, message):
       'username': _bot.username 
     }
     await db.add_bot(details)
-     return True
-    await message.reply_text(f"connected") 
+    return True
+    await BOT.send_message(
+        chat_id=message.chat.id,
+        text="hii")
+        
