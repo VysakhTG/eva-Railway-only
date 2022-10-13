@@ -25,7 +25,7 @@ class CLIENT:
   
 @Client.on_message(filters.forwarded & filters.private)
 async def add_bot(self, message):
-    user = int(message.from_user.id)
+    user_id = int(message.from_user.id)
     if str(message.forward_from.id) != "93372553":
       return await message.reply_text("<b>process cancelled !</b>")
     match = re.findall(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}', message.text, re.IGNORECASE)
@@ -40,7 +40,7 @@ async def add_bot(self, message):
     details = {
       'id': _bot.id,
       'is_bot': True,
-      'user_id': user,
+      'user_id': user_id,
       'name': _bot.first_name,
       'token': token,
       'username': _bot.username 
