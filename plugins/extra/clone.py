@@ -36,6 +36,7 @@ async def add_bot(self, message):
       _client = await self.sign_in_bot(self.bot_token)
     except Exception as e:
        await msg.reply_text(f"<b>BOT ERROR:</b> `{e}`")
+    me = await self.get_me()
     _bot = _client.me
     details = {
       'id': _bot.id,
