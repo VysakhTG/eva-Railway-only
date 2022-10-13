@@ -44,6 +44,21 @@ class Database:
         count = await self.col.count_documents({})
         return count
    
+    async def add_bot(self, datas):
+       if not await self.is_bot_exist(datas['user_id']):
+          await self.bot.insert_one(datas)
+    
+    async def remove_bot(self, user_id):
+       await self.bot.delete_many({'user_id': int(user_id)})
+      
+    async def get_bot(self, user_id: int):
+       bot = await self.bot.find_one({'user_id': user_id})
+       return bot if bot else None
+                                          
+    async def is_bot_exist(self, user_id):
+       bot = await self.bot.find_one({'user_id': user_id})
+       return bool(bot)
+
     async def remove_ban(self, id):
         ban_status = dict(
             is_banned=False,
