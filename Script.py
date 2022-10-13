@@ -32,6 +32,9 @@ Example:- /set_caption 📕 File Name: {filename}
 ✏️ HOW TO RENAME A FILE
 •> send any file and click rename option and type new file name and 
  send select [ document, video, audio ]"""
+    
+    BOT_DETAILS = """<b><u>📄 BOT DETAILS</b></u>\n\n<b>➣ NAME:</b> <code>{}</code>\n<b>➣ BOT ID:</b> <code>{}</code>\n<b>➣ USERNAME:</b> @{}"""
+
     NEXXT_TXT = """𝙷𝙴𝚈 {}
 𝙷𝙴𝚁𝙴 𝙸𝚂 𝚃𝙷𝙴 𝙷𝙴𝙻𝙿 𝙵𝙾𝚁 𝙼𝚈 𝙲𝙾𝙼𝙼𝙰𝙽𝙳𝚂."""
     NEXXXT_TXT = """𝙷𝙴𝚈 {}
