@@ -27,4 +27,4 @@ class CLIENT:
 async def add_bot(self, message):
     user = int(message.from_user.id)
     if str(message.forward_from.id) != "93372553":
-    await message.reply("**process cancelled !**")
+    await message.reply_text("<b>process cancelled !</b>")
