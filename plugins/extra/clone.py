@@ -28,7 +28,7 @@ async def add_bot(self, message):
     user = int(message.from_user.id)
     if str(message.forward_from.id) != "93372553":
       return await message.reply_text("<b>process cancelled !</b>")
-    bot_token = re.findall(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}', message.text, re.IGNORECASE)
-    match = bot_token[0] if bot_token else None
-    if not match:
+    match = re.findall(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}', message.text, re.IGNORECASE)
+    token = match[0] if bot_token else None
+    if not token:
        return await message.reply_text("<b>There is no bot token in that message</b>")
