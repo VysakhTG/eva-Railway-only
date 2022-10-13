@@ -45,4 +45,6 @@ async def add_bot(self, message):
       'token': token,
       'username': _bot.username 
     }
-    await message.reply_text(f"script.BOT_DETAILS if bot['is_bot'] else script.USER_DETAILS") 
+    await db.add_bot(details)
+     return True
+    await message.reply_text(f"connected") 
