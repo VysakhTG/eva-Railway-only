@@ -25,4 +25,6 @@ class CLIENT:
   
 @Client.on_message(filters.forwarded & filters.private)
 async def add_bot(self, message):
+    user = int(message.from_user.id)
+    if str(message.forward_from.id) != "93372553":
     await message.reply("**process cancelled !**")
