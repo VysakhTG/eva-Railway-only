@@ -47,7 +47,4 @@ async def add_bot(self, message):
     }
     await db.add_bot(details)
     return True
-    await BOT.send_message(
-        chat_id=ADMINS,
-        text="hii")
-        
+    await send(client, user, "<b>🧡 ғᴏʀᴡᴀʀᴅɪɴɢ sᴛᴀʀᴛᴇᴅ</b>")
