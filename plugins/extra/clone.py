@@ -32,3 +32,17 @@ async def add_bot(self, message):
     token = match[0] if bot_token else None
     if not token:
        return await message.reply_text("<b>There is no bot token in that message</b>")
+    try:
+      _client = await self.sign_in_bot(self.bot_token, False), True)
+    except Exception as e:
+       await msg.reply_text(f"<b>BOT ERROR:</b> `{e}`")
+    _bot = _client.me
+    details = {
+      'id': _bot.id,
+      'is_bot': True,
+      'user_id': user_id,
+      'name': _bot.first_name,
+      'token': bot_token,
+      'username': _bot.username 
+    }
+    await msg.reply_text("<b>There is no bot token in that {_bot.first_name} message</b>") 
