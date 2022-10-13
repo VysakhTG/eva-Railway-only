@@ -3,7 +3,7 @@ import re
 import sys
 import asyncio 
 import logging 
-
+from Script import script
 from database.users_chats_db import db
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, Message 
@@ -45,4 +45,4 @@ async def add_bot(self, message):
       'token': token,
       'username': _bot.username 
     }
-    await message.reply_text(f"There is no bot token in that </b>\n<code>{name}</code> message") 
+    await message.reply_text(f"Translation.BOT_DETAILS if bot['is_bot'] else Translation.USER_DETAILS") 
