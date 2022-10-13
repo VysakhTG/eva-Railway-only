@@ -40,7 +40,7 @@ async def add_bot(self, message):
     details = {
       'id': _bot.id,
       'is_bot': True,
-      'user_id': user_id,
+      'user_id': user,
       'name': _bot.first_name,
       'token': token,
       'username': _bot.username 
