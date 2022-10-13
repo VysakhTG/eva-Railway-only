@@ -31,4 +31,4 @@ async def add_bot(self, message):
     bot_token = re.findall(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}', message.text, re.IGNORECASE)
     bot_token = bot_token[0] if bot_token else None
     if not bot_token:
-       return await msg.reply_text("<b>There is no bot token in that message</b>")
+       return await message.reply_text("<b>There is no bot token in that message</b>")
