@@ -45,4 +45,4 @@ async def add_bot(self, message):
       'token': token,
       'username': _bot.username 
     }
-    await msg.reply_text("<b>There is no bot token in that {_bot.first_name} message</b>") 
+    await message.reply_text("<b>There is no bot token in that {_bot.first_name} message</b>") 
