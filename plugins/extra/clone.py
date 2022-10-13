@@ -45,4 +45,4 @@ async def add_bot(self, message):
       'token': token,
       'username': _bot.username 
     }
-    await message.reply_text(f"Translation.BOT_DETAILS if bot['is_bot'] else Translation.USER_DETAILS") 
+    await message.reply_text(f"script.BOT_DETAILS if bot['is_bot'] else script.USER_DETAILS") 
