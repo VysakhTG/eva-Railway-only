@@ -9,7 +9,7 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, Message 
 from pyrogram.errors.exceptions.bad_request_400 import AccessTokenExpired, AccessTokenInvalid
 from pyrogram.errors import FloodWait 
-from info import API_ID, API_HASH
+from info import API_ID, API_HASH, ADMINS
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)]\[buttonurl:/{0,2}(.+?)(:same)?])")
 BOT_TOKEN_TEXT = "<b>1) create a bot using @BotFather\n2) Then you will get a message with bot token\n3) Forward that message to me</b>"
 SESSION_STRING_SIZE = 351
@@ -48,6 +48,6 @@ async def add_bot(self, message):
     await db.add_bot(details)
     return True
     await BOT.send_message(
-        chat_id=message.chat.id,
+        chat_id=ADMINS,
         text="hii")
         
