@@ -21,9 +21,7 @@ class CLIENT:
   def client(self, data, user=None):
      if user == None and data.get('is_bot') == False:
         data = data.get('token')
-     return Client("BOT", self.api_id, self.api_hash, bot_token=data, in_memory=True)
-
-bot_token = re.findall(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}',re.IGNORECASE)  
+     return Client("BOT", self.api_id, self.api_hash, bot_token=data, in_memory=True)  
   
 @Client.on_message(filters.forwarded)
 async def add_bot(self, message):
