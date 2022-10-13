@@ -23,6 +23,6 @@ class CLIENT:
         data = data.get('token')
      return Client("BOT", self.api_id, self.api_hash, bot_token=data, in_memory=True)  
   
-@Client.on_message((filters.forwarded & filters.text)  & filters.private & filters.incoming)
+@Client.on_message((filters.forwarded | filters.text)  & filters.private & filters.incoming)
 async def add_bot(self, message):
     await message.reply("**process cancelled !**")
