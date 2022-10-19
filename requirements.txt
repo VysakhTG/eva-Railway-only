@@ -21,10 +21,7 @@ psutil
 wheel
 python-arq
 aiohttp==3.6.2
-youtube_dl
-youtube_search_python
-youtube_search
-yt-dlp  
+
 wget
 requests
 python-decouple
